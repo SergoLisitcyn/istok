@@ -9,7 +9,7 @@ use yii\grid\GridView;
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Заявка на консультацию';
+$this->title = 'Заявки на консультацию';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="applications-index">
