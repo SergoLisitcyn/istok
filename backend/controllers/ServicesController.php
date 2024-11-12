@@ -32,11 +32,6 @@ class ServicesController extends Controller
         );
     }
 
-    /**
-     * Lists all Services models.
-     *
-     * @return string
-     */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
@@ -52,6 +47,20 @@ class ServicesController extends Controller
             ],
             */
         ]);
+
+        if (Yii::$app->request->post('hasEditable'))
+        {
+            $id=$_POST['editableKey'];
+            $model = $this->findModel($id);
+            $post = [];
+            $posted = current($_POST['Services']);
+            $post['Services'] = $posted;
+            if ($model->load($post)) {
+                $model->save();
+            }
+
+            return $this->refresh();
+        }
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,

@@ -158,6 +158,11 @@ class SiteController extends Controller
         return $this->render('company');
     }
 
+    public function actionVacancy()
+    {
+        return $this->render('vacancy');
+    }
+
     public function actionBuilding()
     {
         return $this->render('building');

@@ -35,8 +35,8 @@ AppAsset::register($this);
         <div class="footer__row">
             <div class="footer__columns">
                 <div class="footer__col">
-                    <a href="index.html" class="footer__logo logo">
-                        <img src="img/logo.svg" alt="Logo">
+                    <a href="/" class="footer__logo logo">
+                        <img src="/img/logo.svg" alt="Logo">
                     </a>
                     <p class="footer__descr">Инженерно-строительная компания «Исток» оказывает услуги по возведению жилой и коммерческой недвижимости. Мы реализуем проекты разного уровня сложности, разрабатывая индивидуальные решения для каждого объекта.</p>
                 </div>
@@ -62,7 +62,7 @@ AppAsset::register($this);
                                     <a href="/company" class="footer-info-list__link">О компании</a>
                                 </li>
                                 <li class="footer-info-list__item">
-                                    <a href="vacancy.html" class="footer-info-list__link">Вакансии</a>
+                                    <a href="/vacancy" class="footer-info-list__link">Вакансии</a>
                                 </li>
                                 <li class="footer-info-list__item">
                                     <a href="/contacts" class="footer-info-list__link">Контакты</a>
@@ -74,24 +74,24 @@ AppAsset::register($this);
                             <div class="footer-info__column">
                                 <ul class="footer-info__list footer-info-list">
                                     <li class="footer-info-list__item">
-                                        <a href="finishing.html" class="footer-info-list__link">Отделочные работы квартир, помещений, домов и коттеджей</a>
+                                        <a href="/finishing" class="footer-info-list__link">Отделочные работы квартир, помещений, домов и коттеджей</a>
                                     </li>
                                     <li class="footer-info-list__item">
-                                        <a href="partial-repair.html" class="footer-info-list__link">Частичный ремонт</a>
+                                        <a href="/partial-repair" class="footer-info-list__link">Частичный ремонт</a>
                                     </li>
                                     <li class="footer-info-list__item">
-                                        <a href="minor-repairs.html" class="footer-info-list__link">Мелкий ремонт <br> (услуга «муж на час»)</a>
+                                        <a href="/minor-repairs" class="footer-info-list__link">Мелкий ремонт <br> (услуга «муж на час»)</a>
                                     </li>
                                 </ul>
                                 <ul class="footer-info__list footer-info-list">
                                     <li class="footer-info-list__item">
-                                        <a href="electrical.html" class="footer-info-list__link">Электромонтажные работы и инженерная сантехника</a>
+                                        <a href="/electrical" class="footer-info-list__link">Электромонтажные работы и инженерная сантехника</a>
                                     </li>
                                     <li class="footer-info-list__item">
                                         <a href="/building" class="footer-info-list__link">Строительство домов <br> и коттеджей «под ключ»</a>
                                     </li>
                                     <li class="footer-info-list__item">
-                                        <a href="industrial.html" class="footer-info-list__link">Промышленное строительство быстровозводимых производственных зданий</a>
+                                        <a href="/industrial" class="footer-info-list__link">Промышленное строительство быстровозводимых производственных зданий</a>
                                     </li>
                                 </ul>
                             </div>

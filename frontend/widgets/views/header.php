@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header__row">
             <a href="/" class="header__logo logo">
-                <img src="img/logo.svg" alt="Logo">
+                <img src="/img/logo.svg" alt="Logo">
             </a>
             <div class="header__info header-info">
                 <div class="header-info__columns">
@@ -43,7 +43,7 @@
                         <div class="header-info__menu">
                             <ul class="header-info__list header-list">
                                 <li class="header-list__item">
-                                    <a href="services.html" class="header-list__link">Виды работ</a>
+                                    <a href="/services" class="header-list__link">Виды работ</a>
                                 </li>
                                 <li class="header-list__item">
                                     <a href="/company" class="header-list__link">О компании</a>
@@ -52,7 +52,7 @@
                                     <a href="/works" class="header-list__link">Наши работы</a>
                                 </li>
                                 <li class="header-list__item">
-                                    <a href="vacancy.html" class="header-list__link">Вакансии</a>
+                                    <a href="/vacancy" class="header-list__link">Вакансии</a>
                                 </li>
                                 <li class="header-list__item">
                                     <a href="/contacts" class="header-list__link">Контакты</a>

@@ -52,6 +52,13 @@ return [
                 'company' => '/site/company',
                 'works' => '/site/works',
                 'building' => '/site/building',
+                'vacancy' => '/site/vacancy',
+                'services' => '/services/index',
+                [
+                    'pattern' => 'services/<url:\S+>',
+                    'route' => '/services/view',
+                    'defaults' => ['url' => '']
+                ],
             ],
         ],
 

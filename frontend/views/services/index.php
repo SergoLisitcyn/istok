@@ -39,7 +39,7 @@ $this->registerMetaTag(['name' => 'description','content' => '«Исток» –
                                 <div class="uni-slider__title"><?= $service->name; ?></div>
                                 <p class="uni-slider__descr"><?= $service->desc; ?></p>
                             </div>
-                            <a href="<?= $service->url; ?>" class="uni-slider__button">Подробнее</a>
+                            <a href="services/<?= $service->url; ?>" class="uni-slider__button">Подробнее</a>
                         </div>
                     </div>
                 </div>

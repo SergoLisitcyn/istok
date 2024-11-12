@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
 
-    <?= GridView::widget([
+    <?= \kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
@@ -36,7 +36,30 @@ $this->params['breadcrumbs'][] = $this->title;
             //'title',
             //'description',
             //'sort',
-            'status',
+            [
+                'class' => 'kartik\grid\EditableColumn',
+                'attribute' => 'status',
+                'hAlign' => 'center',
+                'filter' => false,
+                'editableOptions' =>  function ($model, $key, $index) {
+                    return [
+                        'header' => 'статус',
+                        'inputType' => 'dropDownList',
+                        'data' => [0 =>'Не активен',1 =>'Активен'],
+                    ];
+                },
+                'value' => function ($model) {
+                    $result = '';
+                    if($model->status == 0){
+                        $result .= 'Не активен';
+                    } elseif($model->status == 1) {
+                        $result .= 'Активен';
+                    } else {
+                        $result .= 'Активен';
+                    }
+                    return $result;
+                }
+            ],
             [
                 'label' => 'Действия',
                 'format' => 'raw',

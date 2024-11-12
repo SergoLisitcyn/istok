@@ -1,8 +1,11 @@
 <?php
 
 use yii\helpers\Html;
+use yii\web\JsExpression;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
+use yii2jodit\JoditWidget;
+
 /** @var yii\web\View $this */
 /** @var common\models\Services $model */
 /** @var yii\widgets\ActiveForm $form */
@@ -66,7 +69,12 @@ use kartik\file\FileInput;
         </div>
     </div>
 
-    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'text')->widget(JoditWidget::className(), [
+        'settings' => [
+    'height'=>'250px',
+            'enableDragAndDropFileToEditor'=>new JsExpression("true"),
+        ],
+    ]);?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 

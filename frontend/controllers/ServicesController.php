@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\Services;
+use HttpException;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -38,35 +39,24 @@ class ServicesController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Services::find(),
-            /*
-            'pagination' => [
-                'pageSize' => 50
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC,
-                ]
-            ],
-            */
-        ]);
+        $services = Services::find()->where(['status' => 1])->orderBy(['sort' => SORT_ASC])->all();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'services' => $services,
         ]);
     }
 
-    /**
-     * Displays a single Services model.
-     * @param int $id ID
-     * @return string
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
+
+    public function actionView($url): string
     {
+        if(!$url){
+            throw new HttpException(404, 'Страница не существует.');
+        }
+
+        $model = Services::find()->where(['url' => $url])->one();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 

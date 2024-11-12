@@ -106,7 +106,7 @@ class Services extends ActiveRecord
             $fileName = $uid . '-services-banner.' . $imageBannerFile->extension;
             $filePath = $directory . $fileName;
             if ($imageBannerFile->saveAs($filePath)) {
-                $path = '/uploads/images/services/' . $fileName;
+                $path = '/uploads/images/banner/' . $fileName;
 
                 @unlink(Yii::getAlias('@frontend/web') . $this->banner_file);
                 $this->setAttribute('banner', $path);
