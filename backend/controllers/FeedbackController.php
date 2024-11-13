@@ -1,21 +1,18 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
 use common\models\Feedback;
-use common\models\Services;
-use HttpException;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * ServicesController implements the CRUD actions for Services model.
+ * FeedbackController implements the CRUD actions for Feedback model.
  */
-class ServicesController extends Controller
+class FeedbackController extends Controller
 {
     /**
      * @inheritDoc
@@ -38,57 +35,91 @@ class ServicesController extends Controller
 
     public function actionIndex()
     {
-        $services = Services::find()->where(['status' => 1])->orderBy(['sort' => SORT_ASC])->all();
+        $dataProvider = new ActiveDataProvider([
+            'query' => Feedback::find()->where(['version' => 1]),
+            'pagination' => [
+                'pageSize' => 20
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC,
+                ]
+            ],
 
-        $feedback = new Feedback();
-        if ($feedback->load(Yii::$app->request->post())) {
-            $file = UploadedFile::getInstance($feedback, 'file');
-            if (!is_null($file)) {
-                $feedback->file_src_filename = $file->name;
-                $ext = explode(".", $file->name);
-                $feedback->filename = Yii::$app->security->generateRandomString(6) . ".{$ext[1]}";
-                $path = Yii::getAlias('@frontend').'/web/uploads/'.$feedback->filename;
-                $file->saveAs($path);
+        ]);
+        if (Yii::$app->request->post('hasEditable'))
+        {
+            $id=$_POST['editableKey'];
+            $model = $this->findModel($id);
+            $post = [];
+            $posted = current($_POST['Feedback']);
+            $post['Feedback'] = $posted;
+            if ($model->load($post)) {
+                $model->save();
             }
 
-            if ($feedback->save()) {
-                Yii::$app->session->setFlash(
-                    'successReviews',
-                    'Сообщение отправлено! Спасибо!'
-                );
-            } else {
-                var_dump($feedback->errors);die;
-            }
             return $this->refresh();
         }
 
         return $this->render('index', [
-            'services' => $services,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
-
-    public function actionView($url): string
+    public function actionVacancy()
     {
-        if(!$url){
-            throw new HttpException(404, 'Страница не существует.');
+        $dataProvider = new ActiveDataProvider([
+            'query' => Feedback::find()->where(['version' => 2]),
+            'pagination' => [
+                'pageSize' => 20
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC,
+                ]
+            ],
+
+        ]);
+        if (Yii::$app->request->post('hasEditable'))
+        {
+            $id=$_POST['editableKey'];
+            $model = $this->findModel($id);
+            $post = [];
+            $posted = current($_POST['Feedback']);
+            $post['Feedback'] = $posted;
+            if ($model->load($post)) {
+                $model->save();
+            }
+
+            return $this->refresh();
         }
 
-        $model = Services::find()->where(['url' => $url])->one();
-
-        return $this->render('view', [
-            'model' => $model,
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Creates a new Services model.
+     * Displays a single Feedback model.
+     * @param int $id ID
+     * @return string
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Creates a new Feedback model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Services();
+        $model = new Feedback();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -104,7 +135,7 @@ class ServicesController extends Controller
     }
 
     /**
-     * Updates an existing Services model.
+     * Updates an existing Feedback model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -124,7 +155,7 @@ class ServicesController extends Controller
     }
 
     /**
-     * Deletes an existing Services model.
+     * Deletes an existing Feedback model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -137,16 +168,25 @@ class ServicesController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionDownload($id)
+    {
+        $download = Feedback::findOne($id);
+        $file = Yii::getAlias('@frontend').'/web/uploads/'.$download->filename;;
+        if (file_exists($file)) {
+            return Yii::$app->response->sendFile($file);
+        }
+    }
+
     /**
-     * Finds the Services model based on its primary key value.
+     * Finds the Feedback model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Services the loaded model
+     * @return Feedback the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Services::findOne(['id' => $id])) !== null) {
+        if (($model = Feedback::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

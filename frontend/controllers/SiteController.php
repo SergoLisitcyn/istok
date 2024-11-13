@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\Applications;
 use common\models\Banners;
+use common\models\Feedback;
 use common\models\Services;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -20,6 +21,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use yii\web\ErrorAction;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -83,7 +85,7 @@ class SiteController extends Controller
         $application = new Applications();
         $services = Services::find()->where(['status' => 1])->orderBy(['sort' => SORT_ASC])->all();
         if ($application->load(Yii::$app->request->post()) && $application->save()) {
-            Yii::$app->session->setFlash('successReviews', 'Su comentario ha sido enviado para verificación.');
+            Yii::$app->session->setFlash('successReviews', 'Сообщение отправлено! Спасибо!');
             return $this->refresh();
         } else {
             return $this->render('index', [
@@ -155,11 +157,40 @@ class SiteController extends Controller
 
     public function actionCompany()
     {
-        return $this->render('company');
+        $application = new Applications();
+
+        if ($application->load(Yii::$app->request->post()) && $application->save()) {
+            Yii::$app->session->setFlash('successReviews', 'Сообщение отправлено! Спасибо!');
+            return $this->refresh();
+        } else {
+            return $this->render('company');
+        }
+
     }
 
     public function actionVacancy()
     {
+        $feedback = new Feedback();
+        if ($feedback->load(Yii::$app->request->post())) {
+            $file = UploadedFile::getInstance($feedback, 'file');
+            if (!is_null($file)) {
+                $feedback->file_src_filename = $file->name;
+                $ext = explode(".", $file->name);
+                $feedback->filename = Yii::$app->security->generateRandomString(6) . ".{$ext[1]}";
+                $path = Yii::getAlias('@frontend').'/web/uploads/'.$feedback->filename;
+                $file->saveAs($path);
+            }
+
+            if ($feedback->save()) {
+                Yii::$app->session->setFlash(
+                    'successReviews',
+                    'Сообщение отправлено! Спасибо!'
+                );
+            }
+
+            return $this->refresh();
+        }
+
         return $this->render('vacancy');
     }
 

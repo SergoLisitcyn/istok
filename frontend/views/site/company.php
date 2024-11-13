@@ -81,16 +81,17 @@
                 </div>
                 <div class="registration__col">
                     <p class="registration__descr">Закажите консультацию нашего специалиста, чтобы рассчитать смету и сроки по своему проекту и получить рекомендации наших профильных мастеров!</p>
-                    <form class="registration__form registration-form registration-form--small">
+                    <form class="registration__form registration-form registration-form--small" action="/company" method="post">
+                        <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                         <div class="registration-form__fields">
                             <div class="registration-form__field">
-                                <input type="text" name="name" id="name" class="registration-form__elem name" required="" autocomplete="off" minlength="2" placeholder="Введите ваше имя">
+                                <input type="text" name="Applications[name]" id="name" class="registration-form__elem name" required="" autocomplete="off" minlength="2" placeholder="Введите ваше имя">
                             </div>
                             <div class="registration-form__field">
-                                <input type="tel" name="phone" id="phone" class="registration-form__elem phone" required="" autocomplete="off" placeholder="Введите ваш телефон">
+                                <input type="tel" name="Applications[phone]" id="phone" class="registration-form__elem phone" required="" autocomplete="off" placeholder="Введите ваш телефон">
                             </div>
                             <div class="registration-form__field">
-                                <input type="email" name="email" id="email" class="registration-form__elem email" required="" autocomplete="off" placeholder="Введите ваш email">
+                                <input type="email" name="Applications[email]" id="email" class="registration-form__elem email" required="" autocomplete="off" placeholder="Введите ваш email">
                             </div>
                             <div class="registration-form__field">
                                 <button type="submit" class="registration-form__button">Отправить заявку</button>

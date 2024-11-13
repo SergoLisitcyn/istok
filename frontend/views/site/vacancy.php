@@ -70,16 +70,18 @@
             <h2 class="registration__title">Присоединяйтесь к нашей команде, <br>
                 зарабатывайте и стройте свое будущее вместе с нами!</h2>
             <p class="registration__caption">Расскажите нам о себе, и мы обязательно свяжемся с вами.</p>
-            <form class="registration__form registration-form">
+            <form class="registration__form registration-form"  action="/vacancy" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+                <input type="hidden" name="Feedback[version]" value="2" />
                 <div class="registration-form__fields">
                     <div class="registration-form__field">
-                        <input type="text" name="name" id="name" class="registration-form__elem name" required="" autocomplete="off" minlength="2" placeholder="Введите ваше имя">
+                        <input type="text" name="Feedback[name]" id="name" class="registration-form__elem name" required="" autocomplete="off" minlength="2" placeholder="Введите ваше имя">
                     </div>
                     <div class="registration-form__field">
-                        <input type="tel" name="phone" id="phone" class="registration-form__elem phone" required="" autocomplete="off" placeholder="Введите ваш телефон">
+                        <input type="tel" name="Feedback[phone]" id="phone" class="registration-form__elem phone" required="" autocomplete="off" placeholder="Введите ваш телефон">
                     </div>
                     <div class="registration-form__field">
-                        <input type="email" name="email" id="email" class="registration-form__elem email" required="" autocomplete="off" placeholder="Введите ваш email">
+                        <input type="email" name="Feedback[email]" id="email" class="registration-form__elem email" required="" autocomplete="off" placeholder="Введите ваш email">
                     </div>
                     <div class="registration-form__field">
                         <div class="registration-form-select registration-form__elem">
@@ -87,8 +89,8 @@
                                 <i class="registration-form-select__icon" aria-hidden="true"></i>
                                 <span class="registration-form-select__span">Физическое лицо</span>
                             </div>
-                            <input class="registration-form-select__input" type="hidden">
-                            <ul class="registration-form-select__options">
+                            <input class="registration-form-select__input" name="Feedback[type]" id="typeF" value="Физическое лицо"  type="hidden">
+                            <ul class="registration-form-select__options" onclick="lang1(event);">
                                 <li class="registration-form-select__option">Физическое лицо</li>
                                 <li class="registration-form-select__option">Юридическое лицо</li>
                             </ul>
@@ -96,15 +98,15 @@
                         <i class="registration-form__icon"></i>
                     </div>
                     <div class="registration-form__field">
-                        <textarea class="registration-form__elem" rows="1" name="textarea" placeholder="Комментарий" autocomplete="off"></textarea>
+                        <textarea class="registration-form__elem" rows="1" name="Feedback[body]" placeholder="Комментарий" autocomplete="off"></textarea>
                     </div>
                     <div class="registration-form__field">
                         <div class="registration-form__dropzone registration-form-dropzone">
                             <div class="registration-form-dropzone__body">
                                 <div class="registration-form-dropzone__row">
                                     <div class="registration-form-dropzone__input">
-                                        <input type="file" name="file" class="file-upload-input"
-                                               onchange="readURL(this);" accept=".pdf,.docx,.doc">
+                                        <input type="file" name="Feedback[file]" class="file-upload-input"
+                                               onchange="readURL(this);" accept=".pdf,.docx,.doc,.txt,.jpg,.jpeg,.png">
                                     </div>
                                     <div class="registration-form-dropzone__title">
                                         Прикрепить резюме (pdf, doc)
@@ -112,7 +114,7 @@
                                 </div>
                                 <div class="vacancy__dropzone-upload registration-form-dropzone__upload">
                                     <div class="registration-form-dropzone__message">
-                                        <img class="registration-form-dropzone__image" src="img/form-check.svg" alt="Ваше резюме">
+                                        <img class="registration-form-dropzone__image" src="img/form-check.svg" alt="Ваш файл">
                                         <div class="registration-form-dropzone__text">Ваше резюме загружено</div>
                                     </div>
                                     <div class="registration-form-dropzone__remove-wrap">

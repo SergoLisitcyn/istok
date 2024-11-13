@@ -7,12 +7,6 @@ use frontend\widgets\HeaderWidget;
 $this->title = HeaderWidget::widget(['type' => 'titleSeo']);
 $this->registerMetaTag(['name' => 'description','content' => HeaderWidget::widget(['type' => 'description'])]);
 ?>
-<?php if( Yii::$app->session->hasFlash('successReviews') ): ?>
-    <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <?php echo Yii::$app->session->getFlash('successReviews'); ?>
-    </div>
-<?php endif;?>
 <?php if($banner) : ?>
 <section class="main-info">
     <div class="container">

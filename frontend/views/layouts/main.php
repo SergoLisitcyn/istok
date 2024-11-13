@@ -22,7 +22,12 @@ AppAsset::register($this);
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
-
+<?php if( Yii::$app->session->hasFlash('successReviews') ): ?>
+    <div class="alert alert-success alert-dismissible alert-main-page" role="alert">
+        <button type="button" class="close-main-page" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?php echo Yii::$app->session->getFlash('successReviews'); ?>
+    </div>
+<?php endif;?>
 <?= HeaderWidget::widget(['type' => 'header']) ?>
 
 <main role="main" class="main">
