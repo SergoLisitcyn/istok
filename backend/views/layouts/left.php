@@ -11,6 +11,7 @@
                     ['label' => 'Ответы на вопросы', 'icon' => 'question-circle', 'url' => ['/feedback']],
                     ['label' => 'Резюме', 'icon' => 'address-card', 'url' => ['/feedback/vacancy']],
                     ['label' => 'Виды работ', 'icon' => 'reorder', 'url' => ['/services']],
+                    ['label' => 'Подкатегории', 'icon' => 'picture-o', 'url' => ['/category']],
                 ],
             ]
         ) ?>

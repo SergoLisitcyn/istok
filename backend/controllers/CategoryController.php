@@ -1,22 +1,19 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
 use common\models\Category;
-use common\models\Feedback;
-use common\models\Services;
-use HttpException;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * ServicesController implements the CRUD actions for Services model.
+ * CategoryController implements the CRUD actions for Category model.
  */
-class ServicesController extends Controller
+class CategoryController extends Controller
 {
     /**
      * @inheritDoc
@@ -39,72 +36,65 @@ class ServicesController extends Controller
 
     public function actionIndex()
     {
-        $services = Services::find()->where(['status' => 1])->orderBy(['sort' => SORT_ASC])->all();
+        $dataProvider = new ActiveDataProvider([
+            'query' => Category::find(),
+            /*
+            'pagination' => [
+                'pageSize' => 50
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC,
+                ]
+            ],
+            */
+        ]);
 
-        $feedback = new Feedback();
-        if ($feedback->load(Yii::$app->request->post())) {
-            $file = UploadedFile::getInstance($feedback, 'file');
-            if (!is_null($file)) {
-                $feedback->file_src_filename = $file->name;
-                $ext = explode(".", $file->name);
-                $feedback->filename = Yii::$app->security->generateRandomString(6) . ".{$ext[1]}";
-                $path = Yii::getAlias('@frontend').'/web/uploads/'.$feedback->filename;
-                $file->saveAs($path);
+        if (Yii::$app->request->post('hasEditable'))
+        {
+            $id=$_POST['editableKey'];
+            $model = $this->findModel($id);
+            $post = [];
+            $posted = current($_POST['Category']);
+            $post['Category'] = $posted;
+            if ($model->load($post)) {
+                $model->save();
             }
 
-            if ($feedback->save()) {
-                Yii::$app->session->setFlash(
-                    'successReviews',
-                    'Сообщение отправлено! Спасибо!'
-                );
-            } else {
-                var_dump($feedback->errors);die;
-            }
             return $this->refresh();
         }
 
         return $this->render('index', [
-            'services' => $services,
-        ]);
-    }
-
-
-    public function actionView($url): string
-    {
-        if(!$url){
-            throw new HttpException(404, 'Страница не существует.');
-        }
-
-        $model = Services::find()->where(['url' => $url])->one();
-        $category = null;
-        if($model){
-            $category = Category::find()
-                ->where([
-                    'parent_id' => $model['id'],
-                    'status' => 1
-                ])
-                ->all();
-        }
-
-
-        return $this->render('view', [
-            'model' => $model,
-            'category' => $category,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Creates a new Services model.
+     * Displays a single Category model.
+     * @param int $id ID
+     * @return string
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Creates a new Category model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Services();
+        $model = new Category();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                Yii::$app->session->addFlash('success', 'Создан');
+                return $this->redirect(['update', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -116,7 +106,7 @@ class ServicesController extends Controller
     }
 
     /**
-     * Updates an existing Services model.
+     * Updates an existing Category model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -127,7 +117,8 @@ class ServicesController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->addFlash('success', 'Обновлено');
+            return $this->redirect(['update', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -136,7 +127,7 @@ class ServicesController extends Controller
     }
 
     /**
-     * Deletes an existing Services model.
+     * Deletes an existing Category model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -150,15 +141,15 @@ class ServicesController extends Controller
     }
 
     /**
-     * Finds the Services model based on its primary key value.
+     * Finds the Category model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Services the loaded model
+     * @return Category the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Services::findOne(['id' => $id])) !== null) {
+        if (($model = Category::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
