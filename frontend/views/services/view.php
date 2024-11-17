@@ -15,6 +15,18 @@ if($model->banner){
 }
 
 ?>
+<div class="breadcrumbs">
+    <div class="container">
+        <ul class="breadcrumbs__items">
+            <li class="breadcrumbs__item">
+                <a href="/services" class="breadcrumbs__link">Виды работ</a>
+            </li>
+            <li class="breadcrumbs__item">
+                <?= $model->name; ?>
+            </li>
+        </ul>
+    </div>
+</div>
 <section class="finishing-heading heading" style="<?= $styleBanner ?>">
     <div class="container">
         <div class="heading__row">
