@@ -49,7 +49,7 @@ if($model->banner){
             <?php foreach ($category as $item) :?>
                 <?php if($item->type == 1) : ?>
                         <div class="finishing-slider__item">
-                            <div class="finishing-slider__row">
+                            <div class="finishing-slider__row" style="margin-right: 15px">
                                 <div class="finishing-slider__title"><?= $item->name; ?></div>
                                 <?php if($item->price) : ?>
                                     <div class="finishing-slider__price"><?= $item->price; ?></div>
