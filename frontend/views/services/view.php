@@ -40,8 +40,8 @@ if($model->banner){
     <div class="container">
         <h3 class="partial-repair-slider__subtitle section-subtitle">Мы производим следующие работы:</h3>
         <div class="section-slider__slider uni-slider">
+            <?php foreach ($category as $item) :?>
             <div class="uni-slider__item">
-                <?php foreach ($category as $item) :?>
                 <div class="uni-slider__row">
                     <?php if($item->number) : ?>
                     <div class="minor-repair-slider__number"><?= $item->number; ?></div>
@@ -68,9 +68,8 @@ if($model->banner){
                     </div>
 
                 </div>
-                <?php endforeach; ?>
             </div>
-
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
