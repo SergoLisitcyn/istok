@@ -33,42 +33,94 @@ if($model->banner){
             <h1 class="heading__title">Виды работ</h1>
         </div>
     </div>
-    <?= $model->text; ?>
 </section>
+
+<section class="partial-repair">
+    <div class="container">
+        <?= $model->text; ?>
+    </div>
+</section>
+
 <?php if($category) : ?>
 <section class="partial-repair-slider section-slider">
     <div class="container">
-        <h3 class="partial-repair-slider__subtitle section-subtitle">Мы производим следующие работы:</h3>
+<!--        <h3 class="partial-repair-slider__subtitle section-subtitle">Мы производим следующие работы:</h3>-->
         <div class="section-slider__slider uni-slider">
             <?php foreach ($category as $item) :?>
-            <div class="uni-slider__item">
-                <div class="uni-slider__row">
-                    <?php if($item->number) : ?>
-                    <div class="minor-repair-slider__number"><?= $item->number; ?></div>
-                    <?php endif; ?>
-                    <?php if($item->image) : ?>
-                    <div class="uni-slider__image">
-                        <img src="<?= $item->image; ?>" alt="<?= $item->name; ?>">
-                    </div>
-                    <?php endif; ?>
-                    <div class="uni-slider__column">
-                        <div class="uni-slider__info">
-                            <div class="uni-slider__title"><?= $item->name; ?></div>
+                <?php if($item->type == 1) : ?>
+                        <div class="finishing-slider__item">
+                            <div class="finishing-slider__row">
+                                <div class="finishing-slider__title"><?= $item->name; ?></div>
+                                <?php if($item->price) : ?>
+                                    <div class="finishing-slider__price"><?= $item->price; ?></div>
+                                <?php endif; ?>
+                                <?php if($item->list) : ?>
+                                <div class="finishing-slider__text">Cостав работ:</div>
+                                <div class="finishing-slider__column">
+                                    <ul class="finishing-slider__list finishing-slider-list">
+                                        <?php foreach ($item->list as $list) :?>
+                                            <li class="finishing-slider-list__item"><?= $list ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
+                <?php endif; ?>
+                <?php if($item->type == 2) : ?>
+                    <div class="uni-slider__item">
+                        <div class="uni-slider__row">
+                            <?php if($item->image) : ?>
+                                <div class="uni-slider__image">
+                                    <img src="<?= $item->image; ?>" alt="<?= $item->name; ?>">
+                                </div>
+                            <?php endif; ?>
+                            <div class="uni-slider__column">
+                                <?php if($item->desc) : ?>
+                                <div class="uni-slider__info">
+                                    <p class="uni-slider__descr"><?= $item->desc; ?></p>
+                                </div>
+                                <?php endif; ?>
+                                <?php if($item->price) : ?>
+                                <div class="industrial-slider__info industrial-slider-info">
+                                    <div class="industrial-slider-info__row">
+                                        <div class="industrial-slider-info__price"><?= $item->price; ?></div>
+                                    </div>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if($item->type == 3) : ?>
+                    <div class="minor-repair-slider__item">
+                        <?php if($item->number) : ?>
+                            <div class="minor-repair-slider__number"><?= $item->number; ?></div>
+                        <?php endif; ?>
+                        <div class="minor-repair-slider__title"><?= $item->name; ?></div>
                         <?php if($item->desc) : ?>
                         <div class="minor-repair-slider__text"><?= $item->desc; ?></div>
                         <?php endif; ?>
-                        <?php if($item->price) : ?>
-                        <div class="industrial-slider__info industrial-slider-info">
-                            <div class="industrial-slider-info__row">
-                                <div class="industrial-slider-info__price"><?= $item->price; ?></div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if($item->type == 4) : ?>
+                    <div class="uni-slider__item">
+                        <div class="uni-slider__row">
+                            <?php if($item->image) : ?>
+                                <div class="uni-slider__image">
+                                    <img src="<?= $item->image; ?>" alt="<?= $item->name; ?>">
+                                </div>
+                            <?php endif; ?>
+                            <div class="uni-slider__column">
+                                <div class="uni-slider__info">
+                                    <div class="uni-slider__title"><?= $item->name; ?></div>
+                                </div>
                             </div>
                         </div>
-                        <?php endif; ?>
                     </div>
-
-                </div>
-            </div>
+                <?php endif; ?>
             <?php endforeach; ?>
         </div>
     </div>

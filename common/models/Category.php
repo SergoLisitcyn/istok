@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\db\Exception;
 use yii\helpers\FileHelper;
+use yii\helpers\Json;
 use yii\web\UploadedFile;
 
 /**
@@ -17,8 +18,10 @@ use yii\web\UploadedFile;
  * @property string|null $desc
  * @property string|null $price
  * @property string|null $url
+ * @property string|null $list
  * @property int|null $sort
  * @property int|null $status
+ * @property int|null $type
  * @property int $parent_id
  */
 class Category extends \yii\db\ActiveRecord
@@ -39,7 +42,8 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'parent_id'], 'required'],
-            [['sort', 'status', 'parent_id'], 'integer'],
+            [['list'], 'safe'],
+            [['sort', 'status', 'parent_id','type'], 'integer'],
             [['number', 'name', 'image', 'desc', 'price', 'url'], 'string', 'max' => 255],
         ];
     }
@@ -60,7 +64,14 @@ class Category extends \yii\db\ActiveRecord
             'sort' => 'Сортировка',
             'status' => 'Статус',
             'parent_id' => 'Вид работ',
+            'type' => 'Тип карточки',
+            'list' => 'Список',
         ];
+    }
+
+    public function afterFind() {
+        parent::afterFind();
+        $this->list = Json::decode($this->list);
     }
 
     /**
