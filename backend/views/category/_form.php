@@ -154,7 +154,7 @@ if($model){
     </div>
 
     <div id="desc">
-        <?= $form->field($model, 'desc')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'desc')->textarea(['rows' => 3]) ?>
     </div>
     <div id="price">
         <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>

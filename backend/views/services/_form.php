@@ -17,7 +17,7 @@ use yii2jodit\JoditWidget;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'desc')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'desc')->textarea(['rows' => 3]) ?>
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
