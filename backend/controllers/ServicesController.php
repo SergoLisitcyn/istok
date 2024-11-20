@@ -36,16 +36,14 @@ class ServicesController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Services::find(),
-            /*
             'pagination' => [
                 'pageSize' => 50
             ],
             'sort' => [
                 'defaultOrder' => [
-                    'id' => SORT_DESC,
+                    'sort' => SORT_ASC,
                 ]
             ],
-            */
         ]);
 
         if (Yii::$app->request->post('hasEditable'))

@@ -117,7 +117,7 @@ if($model){
         'options' =>
             ['id' => 'vacancy-parent_id', 'class' => 'form-group']
     ])->dropDownList(
-        ArrayHelper::map(Services::find()->all(), 'id', 'name'),
+        ArrayHelper::map(Services::find()->orderBy(['sort' => SORT_ASC])->all(), 'id', 'name'),
         ['prompt' => 'Выбрать вид работ']
     );
     ?>
