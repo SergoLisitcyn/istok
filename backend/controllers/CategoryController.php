@@ -145,9 +145,40 @@ class CategoryController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            Yii::$app->session->addFlash('success', 'Обновлено');
-            return $this->redirect(['update', 'id' => $model->id]);
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                if($model->type == 1){
+                    $model->desc = null;
+                    $model->number = null;
+                    $model->image = null;
+                    $model->list = Json::encode($model->list);
+                }
+
+                if($model->type == 2){
+                    $model->number = null;
+                    $model->list = null;
+                }
+
+                if($model->type == 3){
+                    $model->list = null;
+                    $model->image = null;
+                    $model->price = null;
+                }
+
+                if($model->type == 3){
+                    $model->list = null;
+                    $model->desc = null;
+                    $model->price = null;
+                    $model->number = null;
+                }
+
+                if($model->save()){
+                    Yii::$app->session->addFlash('success', 'Обновлено');
+                    return $this->redirect(['update', 'id' => $model->id]);
+                } else {
+                    var_dump($model->errors); die;
+                }
+            }
         }
 
         return $this->render('update', [
