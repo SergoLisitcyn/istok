@@ -335,8 +335,15 @@ button {
     padding-bottom: 15px
 }
 
-.header-info__socials {
-    margin-right: 90px
+.header-info__socials:not(:last-child) {
+    margin-right: 65px
+}
+
+.header-info__socials-row {
+    margin-right: 90px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
 }
 
 .header-info__button {
@@ -382,7 +389,7 @@ button {
     display: none
 }
 
-.header-socials {
+.socials {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -391,7 +398,7 @@ button {
     align-items: center
 }
 
-.header-socials__icon:not(:last-child) {
+.socials__icon:not(:last-child) {
     margin-right: 30px
 }
 
@@ -1538,6 +1545,10 @@ button {
     margin-top: 44px
 }
 
+.footer-connect__socials {
+    margin-top: 40px
+}
+
 .heading {
     background-repeat: no-repeat;
     background-position: center;
@@ -1773,9 +1784,7 @@ button {
     align-items: center;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;
-    padding: 15px;
-    margin: 15px;
+    justify-content: center
 }
 
 .minor-repair-slider__title {
@@ -1910,6 +1919,10 @@ button {
         margin-top: 33px
     }
 
+    .header-info__socials:not(:last-child) {
+        margin-right: 30px
+    }
+
     .header-info__button {
         width: 100%;
         font-size: 20px;
@@ -1958,7 +1971,7 @@ button {
         order: 2
     }
 
-    .header-info-one .header-socials {
+    .header-info-one .header-info__socials-row {
         -webkit-box-ordinal-group: 4;
         -ms-flex-order: 3;
         order: 3
@@ -1968,11 +1981,11 @@ button {
         display: none
     }
 
-    .header-socials__icon:not(:last-child) {
-        margin-right: 35px
+    .socials__icon:not(:last-child) {
+        margin-right: 30px
     }
 
-    .header-socials__icon svg {
+    .socials__icon svg {
         width: 25px;
         height: 24px
     }
@@ -2387,6 +2400,10 @@ button {
     }
 
     .footer-connect__connect-box {
+        margin-top: 16px
+    }
+
+    .footer-connect__socials {
         margin-top: 16px
     }
 

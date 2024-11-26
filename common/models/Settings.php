@@ -16,6 +16,9 @@ use yii\db\ActiveRecord;
  * @property string|null $description
  * @property string|null $maps
  * @property string|null $analytics
+ * @property string|null $ok
+ * @property string|null $vk
+ * @property string|null $dzen
  */
 class Settings extends ActiveRecord
 {
@@ -34,7 +37,7 @@ class Settings extends ActiveRecord
     {
         return [
             [['maps', 'analytics'], 'string'],
-            [['phone', 'email', 'whatsapp', 'telegram', 'title', 'description'], 'string', 'max' => 255],
+            [['phone', 'email', 'whatsapp', 'telegram', 'title', 'description','ok','vk','dzen'], 'string', 'max' => 255],
         ];
     }
 
@@ -53,6 +56,9 @@ class Settings extends ActiveRecord
             'description' => 'Description главной странице',
             'maps' => 'Карта',
             'analytics' => 'Аналитика',
+            'ok' => 'Одноклассники',
+            'vk' => 'ВК',
+            'dzen' => 'ЯДзен',
         ];
     }
 }

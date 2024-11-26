@@ -20,6 +20,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'telegram')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'ok')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'vk')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'dzen')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>

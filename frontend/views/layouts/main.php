@@ -58,6 +58,7 @@ AppAsset::register($this);
                                 <a href="tel:+74953637967" class="connect-box__link">+7 (495) 363-79-67</a>
                             </div>
                         </div>
+                        <?= HeaderWidget::widget(['type' => 'footer_social']) ?>
                     </div>
                     <div class="footer__info footer-info">
                         <div class="footer-info__about">
