@@ -76,6 +76,19 @@ use yii2jodit\JoditWidget;
         ],
     ]);?>
 
+    <?= $form->field($model, 'text_top')->widget(JoditWidget::className(), [
+        'settings' => [
+            'height'=>'150px',
+            'enableDragAndDropFileToEditor'=>new JsExpression("true"),
+        ],
+    ]);?>
+    <?= $form->field($model, 'text_bottom')->widget(JoditWidget::className(), [
+        'settings' => [
+            'height'=>'150px',
+            'enableDragAndDropFileToEditor'=>new JsExpression("true"),
+        ],
+    ]);?>
+
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>

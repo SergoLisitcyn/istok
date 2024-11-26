@@ -71,7 +71,7 @@ class Category extends \yii\db\ActiveRecord
 
     public function afterFind() {
         parent::afterFind();
-        $this->list = @Json::decode($this->list);
+        $this->list = Json::decode($this->list);
     }
 
     /**

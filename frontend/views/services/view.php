@@ -30,21 +30,27 @@ if($model->banner){
 <section class="finishing-heading heading" style="<?= $styleBanner ?>">
     <div class="container">
         <div class="heading__row">
-            <h1 class="heading__title">Виды работ</h1>
+            <h1 class="heading__title"><?= $model->name; ?></h1>
         </div>
     </div>
 </section>
 
+<?php if($model->text) : ?>
 <section class="partial-repair">
     <div class="container">
-        <?= $model->text; ?>
+        <div class="partial-repair__row section-row">
+            <?= $model->text; ?>
+        </div>
     </div>
 </section>
+<?php endif; ?>
 
 <?php if($category) : ?>
 <section class="partial-repair-slider section-slider">
     <div class="container">
-<!--        <h3 class="partial-repair-slider__subtitle section-subtitle">Мы производим следующие работы:</h3>-->
+        <?php if($model->text_top) : ?>
+            <?= $model->text_top; ?>
+        <?php endif; ?>
         <div class="section-slider__slider uni-slider">
             <?php foreach ($category as $item) :?>
                 <?php if($item->type == 1) : ?>
@@ -123,6 +129,9 @@ if($model->banner){
                 <?php endif; ?>
             <?php endforeach; ?>
         </div>
+        <?php if($model->text_bottom) : ?>
+            <?= $model->text_bottom; ?>
+        <?php endif; ?>
     </div>
 </section>
 <?php endif; ?>
