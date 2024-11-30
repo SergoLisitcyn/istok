@@ -90,6 +90,9 @@ class ServicesController extends Controller
                 if($type == 1){
                     $typeClass = 'finishing-slider';
                 }
+                if($type == 3){
+                    $typeClass = 'minor-repair-slider';
+                }
             }
 
         }

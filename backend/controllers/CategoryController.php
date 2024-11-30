@@ -111,7 +111,7 @@ class CategoryController extends Controller
                     $model->price = null;
                 }
 
-                if($model->type == 3){
+                if($model->type == 4){
                     $model->list = null;
                     $model->desc = null;
                     $model->price = null;
@@ -165,7 +165,7 @@ class CategoryController extends Controller
                     $model->price = null;
                 }
 
-                if($model->type == 3){
+                if($model->type == 4){
                     $model->list = null;
                     $model->desc = null;
                     $model->price = null;
