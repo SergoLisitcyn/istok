@@ -2567,3 +2567,15 @@ button {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+.partial-repair__row p{
+    font-size: 20px;
+    color: #000;
+    padding-top: 25px;
+}
+
+.partial-repair__row h2 {
+    font-size: 36px;
+    font-weight: 500;
+    color: #000a1a;
+}
