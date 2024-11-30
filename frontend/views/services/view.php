@@ -55,7 +55,7 @@ if($model->breadcrumbs){
         <?php if($model->text_top) : ?>
             <?= $model->text_top; ?>
         <?php endif; ?>
-        <div class="section-slider__slider uni-slider">
+        <div class="section-slider__slider <?= $typeClass ?>">
             <?php foreach ($category as $item) :?>
                 <?php if($item->type == 1) : ?>
                         <div class="finishing-slider__item">

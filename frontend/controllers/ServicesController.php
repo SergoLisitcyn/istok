@@ -77,6 +77,7 @@ class ServicesController extends Controller
 
         $model = Services::find()->where(['url' => $url])->one();
         $category = null;
+        $typeClass = 'uni-slider';
         if($model){
             $category = Category::find()
                 ->where([
@@ -84,12 +85,20 @@ class ServicesController extends Controller
                     'status' => 1
                 ])
                 ->all();
+            if($category && $category[0] && $category[0]->type){
+                $type = $category[0]->type;
+                if($type == 1){
+                    $typeClass = 'finishing-slider';
+                }
+            }
+
         }
 
 
         return $this->render('view', [
             'model' => $model,
             'category' => $category,
+            'typeClass' => $typeClass,
         ]);
     }
 
