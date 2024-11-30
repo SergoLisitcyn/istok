@@ -7,13 +7,16 @@ use yii\widgets\DetailView;
 /** @var common\models\Services $model */
 
 
-if(!empty($model->title_seo)) { $this->title = $model->title_seo; }
+if(!empty($model->title)) { $this->title = $model->title; }
 if(!empty($model->description)) { $this->registerMetaTag(['name' => 'description','content' => $model->description]); }
 $styleBanner = '';
 if($model->banner){
     $styleBanner = 'background-image:'.$model->banner;
 }
-
+$breadcrumbs = $model->name;
+if($model->breadcrumbs){
+    $breadcrumbs = $model->breadcrumbs;
+}
 ?>
 <div class="breadcrumbs">
     <div class="container">
@@ -22,7 +25,7 @@ if($model->banner){
                 <a href="/services" class="breadcrumbs__link">Виды работ</a>
             </li>
             <li class="breadcrumbs__item">
-                <?= $model->name; ?>
+                <?= $breadcrumbs ?>
             </li>
         </ul>
     </div>

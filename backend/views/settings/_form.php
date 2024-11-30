@@ -26,6 +26,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'dzen')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'call')->dropDownList([
+        '1' => 'Включен',
+        '0' => 'Выключен'
+    ]) ?>
+
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>

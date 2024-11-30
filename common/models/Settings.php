@@ -19,6 +19,7 @@ use yii\db\ActiveRecord;
  * @property string|null $ok
  * @property string|null $vk
  * @property string|null $dzen
+ * @property int|null $call
  */
 class Settings extends ActiveRecord
 {
@@ -37,6 +38,7 @@ class Settings extends ActiveRecord
     {
         return [
             [['maps', 'analytics'], 'string'],
+            [['call'], 'integer'],
             [['phone', 'email', 'whatsapp', 'telegram', 'title', 'description','ok','vk','dzen'], 'string', 'max' => 255],
         ];
     }
@@ -59,6 +61,7 @@ class Settings extends ActiveRecord
             'ok' => 'Одноклассники',
             'vk' => 'ВК',
             'dzen' => 'ЯДзен',
+            'call' => 'Заказать звонок',
         ];
     }
 }

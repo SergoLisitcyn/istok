@@ -60,7 +60,9 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <a href="#" class="header-info__button">Заказать звонок</a>
+                        <?php if($settings->call == 1) : ?>
+                            <a href="#" class="header-info__button">Заказать звонок</a>
+                        <?php endif; ?>
                         <?php if($settings->phone) : ?>
                             <div class="header-info__connect connect-box">
                                 <a href="tel:<?= $settings->phone ?>" class="connect-box__link"><?= $settings->phone ?></a>

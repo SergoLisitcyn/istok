@@ -21,6 +21,8 @@ use yii2jodit\JoditWidget;
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'breadcrumbs')->textInput(['maxlength' => true]) ?>
+
     <div class="row">
         <div class="col-xs-6">
             <div class="form-group field-mfo-logo_file">

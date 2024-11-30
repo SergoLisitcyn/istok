@@ -22,6 +22,7 @@ use yii\web\UploadedFile;
  * @property string|null $text_bottom
  * @property string|null $title
  * @property string|null $description
+ * @property string|null $breadcrumbs
  * @property int|null $sort
  * @property int|null $status
  */
@@ -44,7 +45,7 @@ class Services extends ActiveRecord
     {
         return [
             [['name', 'desc', 'url'], 'required'],
-            [['text','text_top','text_bottom'], 'string'],
+            [['text','text_top','text_bottom','breadcrumbs'], 'string'],
             [['sort', 'status'], 'integer'],
             [['name', 'desc', 'url', 'image', 'banner', 'title', 'description'], 'string', 'max' => 255],
         ];
@@ -68,7 +69,8 @@ class Services extends ActiveRecord
             'sort' => 'Сортировка',
             'status' => 'Статус',
             'text_top' => 'Текст сверху(блок подкатегорий)',
-            'text_bottom' => 'Текст снизу(блок подкатегорий)'
+            'text_bottom' => 'Текст снизу(блок подкатегорий)',
+            'breadcrumbs' => 'Хлебные крошки',
         ];
     }
 
