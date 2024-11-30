@@ -80,24 +80,24 @@ AppAsset::register($this);
                             <div class="footer-info__column">
                                 <ul class="footer-info__list footer-info-list">
                                     <li class="footer-info-list__item">
-                                        <a href="/finishing" class="footer-info-list__link">Отделочные работы квартир, помещений, домов и коттеджей</a>
+                                        <a href="/services/finishing" class="footer-info-list__link">Отделочные работы квартир, помещений, домов и коттеджей</a>
                                     </li>
                                     <li class="footer-info-list__item">
-                                        <a href="/partial-repair" class="footer-info-list__link">Частичный ремонт</a>
+                                        <a href="/services/partial-repair" class="footer-info-list__link">Частичный ремонт</a>
                                     </li>
                                     <li class="footer-info-list__item">
-                                        <a href="/minor-repairs" class="footer-info-list__link">Мелкий ремонт <br> (услуга «муж на час»)</a>
+                                        <a href="/services/minor-repairs" class="footer-info-list__link">Мелкий ремонт <br> (услуга «муж на час»)</a>
                                     </li>
                                 </ul>
                                 <ul class="footer-info__list footer-info-list">
                                     <li class="footer-info-list__item">
-                                        <a href="/electrical" class="footer-info-list__link">Электромонтажные работы и инженерная сантехника</a>
+                                        <a href="/services/electrical" class="footer-info-list__link">Электромонтажные работы и инженерная сантехника</a>
                                     </li>
                                     <li class="footer-info-list__item">
-                                        <a href="/building" class="footer-info-list__link">Строительство домов <br> и коттеджей «под ключ»</a>
+                                        <a href="/services/building" class="footer-info-list__link">Строительство домов <br> и коттеджей «под ключ»</a>
                                     </li>
                                     <li class="footer-info-list__item">
-                                        <a href="/industrial" class="footer-info-list__link">Промышленное строительство быстровозводимых производственных зданий</a>
+                                        <a href="/services/industrial" class="footer-info-list__link">Промышленное строительство быстровозводимых производственных зданий</a>
                                     </li>
                                 </ul>
                             </div>
