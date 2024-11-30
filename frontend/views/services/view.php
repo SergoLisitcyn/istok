@@ -12,7 +12,7 @@ if(!empty($model->description)) { $this->registerMetaTag(['name' => 'description
 $styleBanner = '';
 if($model->banner){
 //    $styleBanner = 'background-image:'.$model->banner;
-    $styleBanner = 'background-image:url(../'.$model->banner.')';
+    $styleBanner = 'background-image:url(..'.$model->banner.')';
 }
 $breadcrumbs = $model->name;
 if($model->breadcrumbs){
