@@ -11,7 +11,8 @@ if(!empty($model->title)) { $this->title = $model->title; }
 if(!empty($model->description)) { $this->registerMetaTag(['name' => 'description','content' => $model->description]); }
 $styleBanner = '';
 if($model->banner){
-    $styleBanner = 'background-image:'.$model->banner;
+//    $styleBanner = 'background-image:'.$model->banner;
+    $styleBanner = 'background-image:url(../'.$model->banner.')';
 }
 $breadcrumbs = $model->name;
 if($model->breadcrumbs){
@@ -64,7 +65,7 @@ if($model->breadcrumbs){
                                     <div class="finishing-slider__price"><?= $item->price; ?></div>
                                 <?php endif; ?>
                                 <?php if($item->list) : ?>
-                                <div class="finishing-slider__text">Cостав работ:</div>
+                                <div class="finishing-slider__text">Состав работ:</div>
                                 <div class="finishing-slider__column">
                                     <ul class="finishing-slider__list finishing-slider-list">
                                         <?php foreach ($item->list as $list) :?>
