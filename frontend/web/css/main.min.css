@@ -2579,3 +2579,10 @@ button {
     font-weight: 500;
     color: #000a1a;
 }
+
+.partial-repair-slider p{
+    font-size: 16px;
+    font-weight: 500;
+    color: #000a1a;
+    margin-top: 10px;
+}
