@@ -1,7 +1,6 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 /** @var yii\web\View $this */
 /** @var common\models\Services $model */
@@ -117,6 +116,9 @@ if($model->breadcrumbs){
 
                 <?php if($item->type == 4) : ?>
                     <div class="uni-slider__item">
+                        <?php if($item->url) : ?>
+                        <a href="<?= Url::toRoute(['services/view', 'url' => $model->url.'/'.$item->url]) ?>">
+                            <?php endif; ?>
                         <div class="uni-slider__row">
                             <?php if($item->image) : ?>
                                 <div class="uni-slider__image">
@@ -129,6 +131,9 @@ if($model->breadcrumbs){
                                 </div>
                             </div>
                         </div>
+                            <?php if($item->url) : ?>
+                        </a>
+                    <?php endif; ?>
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>

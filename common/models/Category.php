@@ -19,6 +19,10 @@ use yii\web\UploadedFile;
  * @property string|null $price
  * @property string|null $url
  * @property string|null $list
+ * @property string|null $content
+ * @property string|null $title
+ * @property string|null $title_seo
+ * @property string|null $description
  * @property int|null $sort
  * @property int|null $status
  * @property int|null $type
@@ -43,9 +47,9 @@ class Category extends \yii\db\ActiveRecord
         return [
             [['name', 'parent_id'], 'required'],
             [['list'], 'safe'],
-            [['desc','price'], 'string'],
+            [['desc','price','content'], 'string'],
             [['sort', 'status', 'parent_id','type'], 'integer'],
-            [['number', 'name', 'image', 'url'], 'string', 'max' => 255],
+            [['number', 'name', 'image', 'url', 'title', 'title_seo', 'description'], 'string', 'max' => 255],
         ];
     }
 
@@ -67,6 +71,10 @@ class Category extends \yii\db\ActiveRecord
             'parent_id' => 'Вид работ',
             'type' => 'Тип карточки',
             'list' => 'Список',
+            'content' => 'Контент',
+            'title' => 'Заголовок H1',
+            'title_seo' => 'Title Seo',
+            'description' => 'Description',
         ];
     }
 

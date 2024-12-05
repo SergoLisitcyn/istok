@@ -10,6 +10,10 @@ $( document ).ready(function() {
     var price = document.getElementById("price");
     var url = document.getElementById("url");
     var list = document.getElementById("list");
+    var content = document.getElementById("content");
+    var titleh1 = document.getElementById("titleh1");
+    var title_seo = document.getElementById("title_seo");
+    var description = document.getElementById("description");
 
     if(type1 && type1.checked){
         number.style.display = "none";
@@ -19,6 +23,10 @@ $( document ).ready(function() {
         price.style.display = "block";
         url.style.display = "none";
         list.style.display = "block";
+        content.style.display = "none";
+        titleh1.style.display = "none";
+        title_seo.style.display = "none";
+        description.style.display = "none";
     }
 
     if(type2 && type2.checked){
@@ -29,6 +37,10 @@ $( document ).ready(function() {
         price.style.display = "block";
         url.style.display = "none";
         list.style.display = "none";
+        content.style.display = "none";
+        titleh1.style.display = "none";
+        title_seo.style.display = "none";
+        description.style.display = "none";
     }
 
     if(type3 && type3.checked){
@@ -39,6 +51,10 @@ $( document ).ready(function() {
         price.style.display = "none";
         url.style.display = "none";
         list.style.display = "none";
+        content.style.display = "none";
+        titleh1.style.display = "none";
+        title_seo.style.display = "none";
+        description.style.display = "none";
     }
 
     if(type4 && type4.checked){
@@ -47,8 +63,12 @@ $( document ).ready(function() {
         imageId.style.display = "block";
         desc.style.display = "none";
         price.style.display = "none";
-        url.style.display = "none";
+        url.style.display = "block";
         list.style.display = "none";
+        content.style.display = "block";
+        titleh1.style.display = "block";
+        title_seo.style.display = "block";
+        description.style.display = "block";
     }
 
 });

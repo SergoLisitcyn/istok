@@ -75,6 +75,18 @@ class ServicesController extends Controller
             throw new HttpException(404, 'Страница не существует.');
         }
 
+        if (strpos($url, '/') !== false) {
+            $result = strstr($url, '/');
+            $slug = str_replace('/', '', $result);
+            $model = Category::find()->where(['url' => $slug])->one();
+            $service = Services::find()->where(['id' => $model->parent_id])->one();
+
+            return $this->render('view-category', [
+                'model' => $model,
+                'service' => $service,
+            ]);
+        }
+
         $model = Services::find()->where(['url' => $url])->one();
         $category = null;
         $typeClass = 'uni-slider';

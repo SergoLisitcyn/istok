@@ -97,18 +97,30 @@ class CategoryController extends Controller
                     $model->desc = null;
                     $model->number = null;
                     $model->image = null;
+                    $model->content = null;
+                    $model->title = null;
+                    $model->title_seo = null;
+                    $model->description = null;
                     $model->list = Json::encode($model->list);
                 }
 
                 if($model->type == 2){
                     $model->number = null;
                     $model->list = null;
+                    $model->content = null;
+                    $model->title = null;
+                    $model->title_seo = null;
+                    $model->description = null;
                 }
 
                 if($model->type == 3){
                     $model->list = null;
                     $model->image = null;
                     $model->price = null;
+                    $model->content = null;
+                    $model->title = null;
+                    $model->title_seo = null;
+                    $model->description = null;
                 }
 
                 if($model->type == 4){
@@ -152,17 +164,29 @@ class CategoryController extends Controller
                     $model->number = null;
                     $model->image = null;
                     $model->list = Json::encode($model->list);
+                    $model->content = null;
+                    $model->title = null;
+                    $model->title_seo = null;
+                    $model->description = null;
                 }
 
                 if($model->type == 2){
                     $model->number = null;
                     $model->list = null;
+                    $model->content = null;
+                    $model->title = null;
+                    $model->title_seo = null;
+                    $model->description = null;
                 }
 
                 if($model->type == 3){
                     $model->list = null;
                     $model->image = null;
                     $model->price = null;
+                    $model->content = null;
+                    $model->title = null;
+                    $model->title_seo = null;
+                    $model->description = null;
                 }
 
                 if($model->type == 4){
