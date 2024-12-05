@@ -78,6 +78,13 @@ use yii2jodit\JoditWidget;
         ],
     ]);?>
 
+    <?= $form->field($model, 'content_bottom')->widget(JoditWidget::className(), [
+        'settings' => [
+            'height'=>'250px',
+            'enableDragAndDropFileToEditor'=>new JsExpression("true"),
+        ],
+    ]);?>
+
     <?= $form->field($model, 'text_top')->widget(JoditWidget::className(), [
         'settings' => [
             'height'=>'150px',

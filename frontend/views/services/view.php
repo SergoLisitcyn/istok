@@ -139,3 +139,12 @@ if($model->breadcrumbs){
     </div>
 </section>
 <?php endif; ?>
+<?php if($model->content_bottom) : ?>
+    <section class="important-section">
+        <div class="container">
+            <div class="partial-repair__row section-row">
+                <?= $model->content_bottom; ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>

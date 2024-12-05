@@ -6,6 +6,8 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use unclead\multipleinput\MultipleInput;
+use yii2jodit\JoditWidget;
+use yii\web\JsExpression;
 
 /** @var yii\web\View $this */
 /** @var common\models\Category $model */
@@ -157,7 +159,12 @@ if($model){
         <?= $form->field($model, 'desc')->textarea(['rows' => 3]) ?>
     </div>
     <div id="price">
-        <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'price')->widget(JoditWidget::className(), [
+            'settings' => [
+                'height'=>'250px',
+                'enableDragAndDropFileToEditor'=>new JsExpression("true"),
+            ],
+        ]);?>
     </div>
     <div id="url">
         <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
