@@ -53,6 +53,7 @@ return [
                 'works' => '/site/works',
                 'building' => '/site/building',
                 'vacancy' => '/site/vacancy',
+                'privacy' => '/site/privacy',
                 'services' => '/services/index',
                 [
                     'pattern' => 'services/<url:\S+>',

@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\Applications;
 use common\models\Banners;
 use common\models\Feedback;
+use common\models\Pages;
 use common\models\Services;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -137,7 +138,18 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        return $this->render('contact');
+        $data = Pages::findOne(['url' => 'contacts']);
+        return $this->render('contact', [
+            'data' => $data,
+        ]);
+    }
+
+    public function actionPrivacy()
+    {
+        $data = Pages::findOne(['url' => 'privacy']);
+        return $this->render('privacy', [
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -152,24 +164,30 @@ class SiteController extends Controller
 
     public function actionWorks()
     {
-        return $this->render('works');
+        $data = Pages::findOne(['url' => 'works']);
+        return $this->render('works', [
+            'data' => $data,
+        ]);
     }
 
     public function actionCompany()
     {
         $application = new Applications();
-
+        $data = Pages::findOne(['url' => 'company']);
         if ($application->load(Yii::$app->request->post()) && $application->save()) {
             Yii::$app->session->setFlash('successReviews', 'Сообщение отправлено! Спасибо!');
             return $this->refresh();
         } else {
-            return $this->render('company');
+            return $this->render('company', [
+                'data' => $data,
+            ]);
         }
 
     }
 
     public function actionVacancy()
     {
+        $data = Pages::findOne(['url' => 'vacancy']);
         $feedback = new Feedback();
         if ($feedback->load(Yii::$app->request->post())) {
             $file = UploadedFile::getInstance($feedback, 'file');
@@ -191,7 +209,9 @@ class SiteController extends Controller
             return $this->refresh();
         }
 
-        return $this->render('vacancy');
+        return $this->render('vacancy', [
+            'data' => $data,
+        ]);
     }
 
     public function actionBuilding()

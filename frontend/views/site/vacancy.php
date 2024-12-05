@@ -1,68 +1,28 @@
+<?php
+if(!empty($data->title_seo)) { $this->title = $data->title_seo; }
+if(!empty($data->description)) { $this->registerMetaTag(['name' => 'description','content' => $data->description]); }
+$titleH1 = $data->name;
+if(!empty($data->title)) {
+    $titleH1 = $data->title;
+}
+?>
 <section class="vacancy-heading heading">
     <div class="container">
         <div class="heading__row">
-            <h1 class="heading__title">Вакансии</h1>
+            <h1 class="heading__title"><?= $titleH1 ?></h1>
         </div>
     </div>
 </section>
 
-<section class="vacancy">
-    <div class="container">
-        <div class="vacancy__row section-row">
-            <p class="vacancy__descr section-descr">Команда опытных и квалифицированных сотрудников – это фундамент успеха компании «Исток».</p>
-            <div class="vacancy__columns uni-columns uni-columns-margin">
-                <div class="uni-columns__columns">
-                    <div class="uni-columns__col">
-                        <div class="uni-columns__title">Мы расширяем штат специалистов, приглашая на работу:</div>
-                        <ul class="uni-columns__list uni-list">
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">каменщиков;</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">облицовщиков, плиточников;</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">сварщиков;</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">электромонтажников и электриков;</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">маляров, штукатуров, шпатлевщиков;</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">сантехников.</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="uni-columns__col uni-columns__col--image">
-                        <img class="uni-columns__image" src="img/vacancy.jpg" alt="Vacancy">
-                    </div>
-                </div>
-                <div class="uni-image--mobile"></div>
+<?php if($data->content) : ?>
+    <section class="vacancy">
+        <div class="container">
+            <div class="vacancy__row section-row">
+                <?= $data->content ?>
             </div>
-            <p class="vacancy__postscript uni-postscript uni-postscript-margin">Компания гарантирует легальное трудоустройство, безопасные условия работы и конкурентную зарплату. Полный перечень актуальных вакансий, а также точные требования к соискателям можно узнать, связавшись с отделом персонала по телефону, указанному в «Контактах».</p>
         </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>
 
 <section class="registration">
     <div class="container">

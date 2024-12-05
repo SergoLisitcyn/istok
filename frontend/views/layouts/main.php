@@ -73,6 +73,9 @@ AppAsset::register($this);
                                 <li class="footer-info-list__item">
                                     <a href="/contacts" class="footer-info-list__link">Контакты</a>
                                 </li>
+                                <li class="footer-info-list__item">
+                                    <a href="/privacy" class="footer-info-list__link">Политика конфиденциальности</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="footer-info__box">

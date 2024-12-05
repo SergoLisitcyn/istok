@@ -1,75 +1,28 @@
+<?php
+if(!empty($data->title_seo)) { $this->title = $data->title_seo; }
+if(!empty($data->description)) { $this->registerMetaTag(['name' => 'description','content' => $data->description]); }
+$titleH1 = $data->name;
+if(!empty($data->title)) {
+    $titleH1 = $data->title;
+}
+?>
 <section class="company-heading heading">
     <div class="container">
         <div class="heading__row">
-            <h1 class="heading__title">О компании</h1>
+            <h1 class="heading__title"><?= $titleH1 ?></h1>
         </div>
     </div>
 </section>
-
+<?php if($data->content) : ?>
 <section class="company">
     <div class="container">
         <div class="company__row section-row section-row--no-pb">
-            <p class="company__descr section-descr">Компания «Исток» – это надежный партнер в сфере инженерно-строительных решений. Мы специализируемся на генподрядном строительстве коммерческих и частных объектов. Наш опыт, мощности и команда позволяют выполнять широкий спектр услуг, начиная с возведения «коробки» здания и заканчивая подключением инженерных коммуникаций и отделочными работами.</p>
-            <h3 class="company__subtitle section-subtitle">Почему клиенты выбирают «Исток»?</h3>
-            <p class="company__descr section-descr">Качеству инженерно-строительных работ дают оценку в долгосрочной перспективе. Мы гордимся, что наши объекты выдерживают проверку временем, а клиенты рекомендуют услуги компании «Исток» своим партнерам и знакомым. Чтобы поддерживать безупречную репутацию, мы постоянно повышаем планку качества исполнения наших проектов.</p>
-            <div class="company__columns uni-columns uni-columns-margin">
-                <div class="uni-columns__columns">
-                    <div class="uni-columns__col">
-                        <div class="uni-columns__title">Компания «Исток» – это:</div>
-                        <ul class="uni-columns__list uni-list">
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">четкое выполнение условий договора и сдача объекта без задержек;</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">слаженная команда, подключение необходимых профильных специалистов на каждом этапе реализации проекта;</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">высокие требования к качеству и безопасности используемых материалов и оборудования;</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">современные стандарты выполнения инженерно-строительных работ;</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">рациональное использование ресурсов и техники;</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">профессиональный технический надзор;</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">разработка индивидуальных решений с учетом особенностей проекта.</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="uni-columns__col uni-columns__col--image">
-                        <img class="uni-columns__image" src="img/company.jpg" alt="Company">
-                    </div>
-                </div>
-            </div>
+            <?= $data->content ?>
             <div class="uni-image--mobile"></div>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <section class="registration">
     <div class="container">

@@ -11,8 +11,8 @@ return [
     'modules' => [
         'jodit' => 'yii2jodit\JoditModule',
         'extensions'=>['jpg','png','gif'],
-        'root'=> '@webroot/uploads/images',
-        'baseurl'=> '@web/uploads/images',
+        'root'=> 'frontend/uploads/images',
+        'baseurl'=> 'frontend/uploads/images',
         'maxFileSize'=> '20mb',
         'defaultPermission'=> 0775,
     ],

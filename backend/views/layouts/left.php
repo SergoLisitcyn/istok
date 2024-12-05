@@ -12,6 +12,18 @@
                     ['label' => 'Резюме', 'icon' => 'address-card', 'url' => ['/feedback/vacancy']],
                     ['label' => 'Виды работ', 'icon' => 'reorder', 'url' => ['/services']],
                     ['label' => 'Подкатегории', 'icon' => 'picture-o', 'url' => ['/category']],
+                    [
+                        'label' => 'Страницы',
+                        'icon' => 'book',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'О компании', 'icon' => 'circle-o', 'url' => ['/pages/update?id=1'],],
+                            ['label' => 'Наши работы', 'icon' => 'circle-o', 'url' => ['/pages/update?id=2'],],
+                            ['label' => 'Вакансии', 'icon' => 'circle-o', 'url' => ['/pages/update?id=3'],],
+                            ['label' => 'Контакты', 'icon' => 'circle-o', 'url' => ['/pages/update?id=4'],],
+                            ['label' => 'Политика конфиденциальности', 'icon' => 'circle-o', 'url' => ['/pages/update?id=5'],],
+                        ],
+                    ],
                 ],
             ]
         ) ?>
