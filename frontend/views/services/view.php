@@ -134,7 +134,10 @@ if($model->breadcrumbs){
             <?php endforeach; ?>
         </div>
         <?php if($model->text_bottom) : ?>
+        <div class="services-bottom">
             <?= $model->text_bottom; ?>
+        </div>
+
         <?php endif; ?>
     </div>
 </section>
