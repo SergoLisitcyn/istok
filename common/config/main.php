@@ -9,12 +9,14 @@ return [
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'modules' => [
-        'jodit' => 'yii2jodit\JoditModule',
-        'extensions'=>['jpg','png','gif'],
-        'root'=> 'frontend/uploads/images',
-        'baseurl'=> 'frontend/uploads/images',
-        'maxFileSize'=> '20mb',
-        'defaultPermission'=> 0775,
+        'jodit' => [
+            'class' => 'yii2jodit\JoditModule',
+            'extensions'=>['jpg','png','gif'],
+            'root'=> 'frontend/uploads/images',
+            'baseurl'=> 'frontend/uploads/images',
+            'maxFileSize'=> '20mb',
+            'defaultPermission'=> 0775,
+        ],
     ],
     'components' => [
         'cache' => [
