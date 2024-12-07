@@ -12,8 +12,8 @@ return [
         'jodit' => [
             'class' => 'yii2jodit\JoditModule',
             'extensions'=>['jpg','png','gif'],
-            'root'=> Yii::getAlias('@frontend').'/uploads/images',
-            'baseurl'=> Yii::getAlias('@frontend').'/uploads/images',
+            'root'=> Yii::getAlias('@uploadsDir'),
+            'baseurl'=> Yii::getAlias('@uploadsDir'),
             'maxFileSize'=> '20mb',
             'defaultPermission'=> 0775,
         ],
