@@ -236,7 +236,7 @@ button {
 .button {
     font-weight: 500;
     text-align: center;
-    padding: 18px 41px;
+    padding: 18px 20px;
     font-size: 16px;
     font-family: Montserrat,sans-serif;
     cursor: pointer;
@@ -516,6 +516,41 @@ button {
 .main-info__button {
     max-width: 233px;
     margin-top: 40px
+}
+
+.not-found {
+    background-image: url(../img/main-pic-bot-found.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 100%;
+    padding: 80px 0 70px
+}
+
+.not-found__row {
+    max-width: 635px
+}
+
+.not-found__title {
+    font-size: 60px;
+    font-weight: 600
+}
+
+.not-found__title+.not-found__descr {
+    margin-top: 34px
+}
+
+.not-found__descr {
+    font-size: 36px;
+    font-weight: 500
+}
+
+.not-found__descr+.not-found__descr {
+    margin-top: 15px
+}
+
+.not-found__button {
+    max-width: 233px;
+    margin-top: 50px
 }
 
 .section-slider__slider,.services__slider {
@@ -1820,6 +1855,333 @@ button {
     font-weight: 500
 }
 
+.main-modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    max-width: 970px;
+    padding: 70px 8%;
+    background: #fff;
+    -webkit-box-shadow: 20px 20px 40px rgba(0,0,0,.25);
+    box-shadow: 20px 20px 40px rgba(0,0,0,.25);
+    border-radius: 20px;
+    width: 95%
+}
+
+.main-modal__title {
+    color: #000a1a;
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    margin: 0
+}
+
+.main-modal__subtitle {
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #000a1a;
+    text-align: center;
+    margin-bottom: 30px
+}
+
+.main-modal__overlay {
+    z-index: 3;
+    position: fixed;
+    background-color: rgba(0,0,0,.4);
+    opacity: .8;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    display: none
+}
+
+.main-modal__close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px
+}
+
+.main-modal__close span {
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    top: 8px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000a1a
+}
+
+.main-modal__close span:first-child {
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 8px
+}
+
+.main-modal__close span:last-child {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    bottom: 8px
+}
+
+.main-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 570px
+}
+
+.main-form__box {
+    position: relative
+}
+
+.main-form__box:not(:first-child) {
+    margin-top: 12px
+}
+
+.main-form__icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-right: 2px solid #000a1a;
+    padding-right: 18px
+}
+
+.main-form__icon--textarea {
+    top: 18%
+}
+
+.main-form__icon svg {
+    width: 30px;
+    height: 30px
+}
+
+.main-form__elem {
+    background-color: transparent;
+    border: 1px solid #000a1a;
+    min-height: 60px;
+    padding: 15px 22px;
+    padding-left: 100px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: Montserrat;
+    color: #000a1a;
+    width: 100%
+}
+
+.main-form__elem::-webkit-input-placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__elem::-moz-placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__elem:-ms-input-placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__elem::-ms-input-placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__elem::placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__elem::-webkit-input-placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__captcha {
+    margin-top: 13px
+}
+
+.main-form__text::-webkit-input-placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__text::-moz-placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__text:-ms-input-placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__text::-ms-input-placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__text::placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__text::-webkit-input-placeholder {
+    color: #000a1a;
+    font-family: Montserrat
+}
+
+.main-form__button {
+    max-width: 270px;
+    margin: 27px auto 0
+}
+
+.main-form-captcha {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+}
+
+.main-form-captcha__code {
+    max-width: 140px;
+    height: 60px;
+    margin-right: 12px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 100%;
+    flex: 1 0 100%
+}
+
+.main-form-captcha__text {
+    background-color: transparent;
+    border: 1px solid #000a1a;
+    height: 60px;
+    padding: 15px 22px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: Montserrat;
+    color: #000a1a;
+    width: 100%
+}
+
+.main-form-select {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.main-form-select__icon {
+    position: absolute;
+    right: 40px;
+    top: 23px
+}
+
+.main-form-select__icon::before {
+    content: "";
+    position: absolute;
+    background-image: url(../img/arrow-select-black.svg);
+    background-repeat: no-repeat;
+    width: 27px;
+    height: 15px
+}
+
+.main-form-select__icon--ok::before {
+    position: absolute;
+    content: "";
+    background-image: url(../img/form-check-black.svg);
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 10px
+}
+
+.main-form-select__select {
+    cursor: pointer;
+    display: block
+}
+
+.main-form-select__options {
+    position: absolute;
+    color: #000a1a;
+    background-color: #fff;
+    width: 100%;
+    top: 98%;
+    left: -1px;
+    margin-top: 2px;
+    border-radius: 0 1px 5px 5px;
+    overflow: hidden;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 9;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #30a9cf;
+    border-top: 0;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+.main-form-select__options::-webkit-scrollbar {
+    width: 5px
+}
+
+.main-form-select__options::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: 3px solid #eee
+}
+
+.main-form-select__span {
+    font-size: 16px;
+    color: #000a1a
+}
+
+.main-form-select__option {
+    padding: 10px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000a1a
+}
+
+.main-form-select__option:hover {
+    background: rgba(48,169,207,.2)
+}
+
 @media (max-width: 1250px) {
     .registration-box-form {
         padding-right:20px;
@@ -1927,7 +2289,8 @@ button {
         width: 100%;
         font-size: 20px;
         padding: 18px;
-        white-space: nowrap
+        white-space: nowrap;
+        text-align: center
     }
 
     .header-info__connect {
@@ -2478,6 +2841,24 @@ button {
     .uni-slider {
         padding-bottom: 30px
     }
+
+    .not-found {
+        padding: 46px 0 270px;
+        background-position: 77% 100%
+    }
+
+    .not-found__title {
+        font-size: 42px
+    }
+
+    .not-found__descr {
+        font-size: 28px;
+        margin-top: 30px
+    }
+
+    .not-found__button {
+        margin-top: 37px
+    }
 }
 
 @media (max-width: 600px) {
@@ -2502,6 +2883,25 @@ button {
 
     .registration-form__button {
         font-size: 20px
+    }
+
+    .not-found__button {
+        max-width: 100%
+    }
+
+    .main-modal {
+        overflow: auto;
+        height: 86vh;
+        padding: 28px 15px
+    }
+
+    .main-modal__title {
+        font-size: 28px;
+        margin-top: 15px
+    }
+
+    .main-modal__subtitle {
+        font-size: 16px
     }
 }
 

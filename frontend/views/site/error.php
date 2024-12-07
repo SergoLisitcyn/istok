@@ -1,27 +1,9 @@
-<?php
-
-/** @var yii\web\View $this */
-/** @var string $name */
-/** @var string $message */
-/** @var Exception $exception */
-
-use yii\helpers\Html;
-
-$this->title = $name;
-?>
-<div class="site-error">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
+<section class="not-found">
+    <div class="container">
+        <div class="not-found__row">
+            <h1 class="not-found__title">Похоже, что такой страницы у нас нет</h1>
+            <h2 class="not-found__descr">Проверьте, правильно ли написан адрес.</h2>
+            <a href="/" class="not-found__button button">Вернуться на главную</a>
+        </div>
     </div>
-
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
-
-</div>
+</section>
