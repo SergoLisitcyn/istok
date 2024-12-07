@@ -1,6 +1,7 @@
 <?php
 
 use common\models\Services;
+use kartik\editors\Summernote;
 use kartik\widgets\FileInput;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -202,12 +203,12 @@ if($model){
     </div>
 
     <div id="content">
-        <?= $form->field($model, 'content')->widget(JoditWidget::className(), [
-            'settings' => [
-                'height'=>'250px',
-                'enableDragAndDropFileToEditor'=>new JsExpression("true"),
-            ],
-        ]);?>
+        <?php
+
+        echo $form->field($model, 'content')->widget(Summernote::class, [
+            'useKrajeePresets' => true,
+        ]);
+        ?>
     </div>
 
     <div id="titleh1">
