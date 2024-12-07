@@ -2,11 +2,6 @@
 
 use yii\caching\FileCache;
 
-$link = 'http://'.$_SERVER['SERVER_NAME'].'/frontend/web/uploads/images';
-if( isset($_SERVER['HTTPS'] ) ) {
-    $link = 'https://'.$_SERVER['SERVER_NAME'].'/frontend/web/uploads/images';
-}
-
 return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -17,8 +12,8 @@ return [
         'jodit' => [
             'class' => 'yii2jodit\JoditModule',
             'extensions'=>['jpg','png','gif'],
-            'root'=> $link,
-            'baseurl'=> $link,
+            'root'=> Yii::getAlias('@frontend').'/uploads/images',
+            'baseurl'=> Yii::getAlias('@frontend').'/uploads/images',
             'maxFileSize'=> '20mb',
             'defaultPermission'=> 0775,
         ],
