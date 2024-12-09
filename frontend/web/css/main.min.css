@@ -1591,7 +1591,8 @@ button {
 }
 
 .heading__row {
-    padding: 60px 0 68px
+    padding: 60px 0 68px;
+    max-width: 64%;
 }
 
 .heading__title {
@@ -2985,4 +2986,9 @@ button {
     font-weight: 500;
     color: #000a1a;
     margin-top: 10px;
+}
+
+.class-row h2{
+    margin-bottom: 15px;
+    margin-top: 15px;
 }

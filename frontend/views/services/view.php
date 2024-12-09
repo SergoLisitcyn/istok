@@ -150,7 +150,7 @@ if($model->breadcrumbs){
 <?php if($model->content_bottom) : ?>
     <section class="important-section">
         <div class="container">
-            <div class="partial-repair__row section-row">
+            <div class="partial-repair__row class-row section-row">
                 <?= $model->content_bottom; ?>
             </div>
         </div>

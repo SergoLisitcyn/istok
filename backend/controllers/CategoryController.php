@@ -38,16 +38,16 @@ class CategoryController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Category::find(),
-            /*
-            'pagination' => [
-                'pageSize' => 50
-            ],
+//            'pagination' => [
+//                'pageSize' => 50
+//            ],
             'sort' => [
                 'defaultOrder' => [
-                    'id' => SORT_DESC,
+                    'status' => SORT_DESC,
+                    'sort' => SORT_ASC,
                 ]
             ],
-            */
+
         ]);
 
         if (Yii::$app->request->post('hasEditable'))

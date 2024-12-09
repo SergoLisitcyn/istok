@@ -96,6 +96,7 @@ class ServicesController extends Controller
                     'parent_id' => $model['id'],
                     'status' => 1
                 ])
+                ->orderBy(['sort' => SORT_ASC])
                 ->all();
             if($category && $category[0] && $category[0]->type){
                 $type = $category[0]->type;
