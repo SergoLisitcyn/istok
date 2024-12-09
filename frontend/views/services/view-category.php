@@ -6,6 +6,10 @@ $titleH1 = $model->name;
 if(!empty($model->title)) {
     $titleH1 = $model->title;
 }
+$styleBanner = '';
+if($service->banner){
+    $styleBanner = 'background-image:url(..'.$service->banner.')';
+}
 
 $breadcrumbs = $service->name;
 if($service->breadcrumbs){
@@ -28,7 +32,7 @@ if($service->breadcrumbs){
             </ul>
         </div>
     </div>
-    <section class="works-heading heading">
+    <section class="works-heading heading" style="<?= $styleBanner ?>">
         <div class="container">
             <div class="heading__row">
                 <h1 class="heading__title"><?= $titleH1 ?></h1>
