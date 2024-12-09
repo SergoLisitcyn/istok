@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\Category;
 use common\models\Feedback;
 use common\models\Services;
+use common\models\Settings;
 use HttpException;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -40,10 +41,12 @@ class ServicesController extends Controller
     public function actionIndex()
     {
         $services = Services::find()->where(['status' => 1])->orderBy(['sort' => SORT_ASC])->all();
+        $settings = Settings::findOne(1);
 
         $feedback = new Feedback();
         if ($feedback->load(Yii::$app->request->post())) {
             $file = UploadedFile::getInstance($feedback, 'file');
+            $post = Yii::$app->request->post();
             if (!is_null($file)) {
                 $feedback->file_src_filename = $file->name;
                 $ext = explode(".", $file->name);
@@ -52,10 +55,17 @@ class ServicesController extends Controller
                 $file->saveAs($path);
             }
 
+            if($post['Feedback']['version'] == 3){
+                $feedback->email = 'test@test.com';
+            }
             if ($feedback->save()) {
+                $message = 'Сообщение отправлено! Спасибо!';
+                if($settings->call_alert){
+                    $message = $settings->call_alert;
+                }
                 Yii::$app->session->setFlash(
                     'successReviews',
-                    'Сообщение отправлено! Спасибо!'
+                    $message
                 );
             } else {
                 var_dump($feedback->errors);die;

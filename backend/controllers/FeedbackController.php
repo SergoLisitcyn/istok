@@ -94,7 +94,40 @@ class FeedbackController extends Controller
             return $this->refresh();
         }
 
-        return $this->render('index', [
+        return $this->render('vacancy', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionCall()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Feedback::find()->where(['version' => 3]),
+            'pagination' => [
+                'pageSize' => 20
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC,
+                ]
+            ],
+
+        ]);
+        if (Yii::$app->request->post('hasEditable'))
+        {
+            $id=$_POST['editableKey'];
+            $model = $this->findModel($id);
+            $post = [];
+            $posted = current($_POST['Feedback']);
+            $post['Feedback'] = $posted;
+            if ($model->load($post)) {
+                $model->save();
+            }
+
+            return $this->refresh();
+        }
+
+        return $this->render('call', [
             'dataProvider' => $dataProvider,
         ]);
     }

@@ -6,6 +6,7 @@ use common\models\Settings;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\Exception;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -68,9 +69,13 @@ class SettingsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            Yii::$app->session->addFlash('success', 'Обновлено');
-            return $this->redirect(['update', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->call_list = Json::encode($model->call_list);
+            if($model->save()){
+                Yii::$app->session->addFlash('success', 'Обновлено');
+                return $this->redirect(['update', 'id' => $model->id]);
+            }
+
         }
 
         return $this->render('update', [

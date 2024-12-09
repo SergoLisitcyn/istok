@@ -1,5 +1,6 @@
 <?php
 
+use unclead\multipleinput\MultipleInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -30,6 +31,18 @@ use yii\widgets\ActiveForm;
         '1' => 'Включен',
         '0' => 'Выключен'
     ]) ?>
+
+    <?php
+    echo $form->field($model, 'call_list')->widget(MultipleInput::className(), [
+        'min'               => 0,
+        'allowEmptyList'    => false,
+        'enableGuessTitle'  => true,
+        'addButtonPosition' => MultipleInput::POS_HEADER,
+    ])
+        ->label(false);
+    ?>
+
+    <?= $form->field($model, 'call_alert')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 

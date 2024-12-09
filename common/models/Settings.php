@@ -3,6 +3,7 @@
 namespace common\models;
 
 use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "settings".
@@ -19,6 +20,8 @@ use yii\db\ActiveRecord;
  * @property string|null $ok
  * @property string|null $vk
  * @property string|null $dzen
+ * @property string|null $call_list
+ * @property string|null $call_alert
  * @property int|null $call
  */
 class Settings extends ActiveRecord
@@ -38,8 +41,9 @@ class Settings extends ActiveRecord
     {
         return [
             [['maps', 'analytics'], 'string'],
+            [['call_list'], 'safe'],
             [['call'], 'integer'],
-            [['phone', 'email', 'whatsapp', 'telegram', 'title', 'description','ok','vk','dzen'], 'string', 'max' => 255],
+            [['phone', 'email', 'whatsapp', 'telegram', 'title', 'description','ok','vk','dzen','call_alert'], 'string', 'max' => 255],
         ];
     }
 
@@ -62,6 +66,13 @@ class Settings extends ActiveRecord
             'vk' => 'ВК',
             'dzen' => 'ЯДзен',
             'call' => 'Заказать звонок',
+            'call_list' => 'Заказать звонок Темы',
+            'call_alert' => 'Заказать звонок Сообщение',
         ];
+    }
+
+    public function afterFind() {
+        parent::afterFind();
+        $this->call_list = Json::decode($this->call_list);
     }
 }
