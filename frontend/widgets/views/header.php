@@ -111,6 +111,7 @@
                 <form class="main-form"  action="/services" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                     <input type="hidden" name="Feedback[version]" value="3" />
+                    <?php if($settings->call_list) : ?>
                     <div class="main-form__box">
                         <div class="main-form__icon">
                             <svg width="33.494919" height="32.000000" viewBox="0 0 33.4949 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -129,7 +130,7 @@
                                 <path id="Vector" d="M5.48 22.46L11.38 22.46" stroke="#000A1A" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <?php if($settings->call_list) : ?>
+
                         <div class="main-form__elem main-form-select">
                             <div class="main-form-select__select">
                                 <i class="main-form-select__icon" aria-hidden="true"></i>
@@ -142,8 +143,9 @@
                                 <?php endforeach; ?>
                             </ul>
                         </div>
-                        <?php endif; ?>
+
                     </div>
+                    <?php endif; ?>
                     <div class="main-form__box">
                         <div class="main-form__icon">
                             <svg width="31.746490" height="31.999756" viewBox="0 0 31.7465 31.9998" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
