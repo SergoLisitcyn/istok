@@ -116,8 +116,8 @@ if($model->breadcrumbs){
                 <?php if($item->type == 4) : ?>
                     <div class="uni-slider__item">
                         <?php if($item->url) : ?>
-                        <a href="<?= Url::toRoute(['services/view', 'url' => $model->url.'/'.$item->url]) ?>">
-                            <?php endif; ?>
+                        <a href="<?= $model->url ?>/<?= $item->url ?>">
+                        <?php endif; ?>
                         <div class="uni-slider__row">
                             <?php if($item->image) : ?>
                                 <div class="uni-slider__image">
