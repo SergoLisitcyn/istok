@@ -36,19 +36,33 @@ class CategoryController extends Controller
 
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Category::find(),
+        if(Yii::$app->request->get('id')){
+            $dataProvider = new ActiveDataProvider([
+                'query' => Category::find()->where(['parent_id' => Yii::$app->request->get('id')]),
+                'sort' => [
+                    'defaultOrder' => [
+                        'status' => SORT_DESC,
+                        'sort' => SORT_ASC,
+                    ]
+                ],
+
+            ]);
+        } else {
+            $dataProvider = new ActiveDataProvider([
+                'query' => Category::find(),
 //            'pagination' => [
 //                'pageSize' => 50
 //            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'status' => SORT_DESC,
-                    'sort' => SORT_ASC,
-                ]
-            ],
+                'sort' => [
+                    'defaultOrder' => [
+                        'status' => SORT_DESC,
+                        'sort' => SORT_ASC,
+                    ]
+                ],
 
-        ]);
+            ]);
+        }
+
 
         if (Yii::$app->request->post('hasEditable'))
         {

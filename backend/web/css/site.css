@@ -106,3 +106,7 @@ a.desc:after {
     position: initial !important;
     float: left !important;
 }
+
+.sidebar-menu{
+    white-space: initial !important;
+}

@@ -1,4 +1,13 @@
+<?php
 
+use common\models\Services;
+
+$category = Services::find()->orderBy(['sort' => SORT_ASC])->all();
+$string = '';
+foreach ($category as $value){
+    $string.= '<li><a href="/admin/category?id='.$value['id'].'"><i class="fa fa-circle-o"></i><span>'.$value['name'].'</span></a></li>';
+}
+?>
 <aside class="main-sidebar">
     <section class="sidebar">
         <?= dmstr\widgets\Menu::widget(
@@ -21,7 +30,10 @@
                         ],
                     ],
                     ['label' => 'Виды работ', 'icon' => 'reorder', 'url' => ['/services']],
-                    ['label' => 'Подкатегории', 'icon' => 'picture-o', 'url' => ['/category']],
+                    ['label' => 'Подкатегории', 'icon' => 'picture-o', 'url' => ['/category'],'template' => '<li class="treeview"><a href="#">
+<i class="fa fa-picture-o"></i>  <span>Подкатегории</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+    <ul class="treeview-menu">'.$string.'</ul>
+</li>'],
                     [
                         'label' => 'Заявки',
                         'icon' => 'address-card',
