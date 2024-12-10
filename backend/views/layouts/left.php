@@ -12,6 +12,7 @@
                         'icon' => 'book',
                         'url' => '#',
                         'items' => [
+                            ['label' => 'Виды работ', 'icon' => 'circle-o', 'url' => ['/pages/update?id=6'],],
                             ['label' => 'О компании', 'icon' => 'circle-o', 'url' => ['/pages/update?id=1'],],
                             ['label' => 'Наши работы', 'icon' => 'circle-o', 'url' => ['/pages/update?id=2'],],
                             ['label' => 'Вакансии', 'icon' => 'circle-o', 'url' => ['/pages/update?id=3'],],

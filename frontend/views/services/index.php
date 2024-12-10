@@ -9,8 +9,8 @@ use yii\grid\GridView;
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'ИСК "Исток - Виды работ';
-$this->registerMetaTag(['name' => 'description','content' => '«Исток» – инженерно-строительная компания с большим опытом возведения коммерческих и жилых объектов: от «коробки» до отделочных работ']);
+if(!empty($pages->title_seo)) { $this->title = $pages->title_seo; }
+if(!empty($pages->description)) { $this->registerMetaTag(['name' => 'description','content' => $pages->description]); }
 
 ?>
 <section class="services-heading heading">
@@ -24,7 +24,9 @@ $this->registerMetaTag(['name' => 'description','content' => '«Исток» –
 <section class="services">
     <div class="container">
         <div class="services__row section-row">
-            <p class="services__descr section-descr">Компания «Исток» предлагает широкий перечень инженерно-строительных работ:</p>
+            <?php if($pages && $pages->content) : ?>
+                <?= $pages->content ?>
+            <?php endif; ?>
             <div class="services__slider uni-slider uni-slider--min-height">
                 <?php foreach($services as $service) : ?>
                 <div class="uni-slider__item">

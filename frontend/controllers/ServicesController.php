@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\Category;
 use common\models\Feedback;
+use common\models\Pages;
 use common\models\Services;
 use common\models\Settings;
 use HttpException;
@@ -42,6 +43,7 @@ class ServicesController extends Controller
     {
         $services = Services::find()->where(['status' => 1])->orderBy(['sort' => SORT_ASC])->all();
         $settings = Settings::findOne(1);
+        $pages = Pages::findOne(['url' => 'services']);
 
         $feedback = new Feedback();
         if ($feedback->load(Yii::$app->request->post())) {
@@ -75,6 +77,7 @@ class ServicesController extends Controller
 
         return $this->render('index', [
             'services' => $services,
+            'pages' => $pages,
         ]);
     }
 

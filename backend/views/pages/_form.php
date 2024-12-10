@@ -28,9 +28,11 @@ use yii2jodit\JoditWidget;
     <?= $form->field($model, 'title_seo')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'doc')->textarea(['rows' => 6]) ?>
-
+    <?php
+    if($model['url'] != 'services') {
+        $form->field($model, 'doc')->textarea(['rows' => 6]);
+    }
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
