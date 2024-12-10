@@ -190,7 +190,7 @@ if($model){
     <div id="url">
         <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
     </div>
-    <div id="list">
+    <div id="list" style="margin-top: 25px">
     <?php
     echo $form->field($model, 'list')->widget(MultipleInput::className(), [
         'min'               => 0,

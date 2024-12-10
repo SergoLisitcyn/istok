@@ -93,42 +93,7 @@ class CategoryController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                if($model->type == 1){
-                    $model->desc = null;
-                    $model->number = null;
-                    $model->image = null;
-                    $model->content = null;
-                    $model->title = null;
-                    $model->title_seo = null;
-                    $model->description = null;
-                    $model->list = Json::encode($model->list);
-                }
-
-                if($model->type == 2){
-                    $model->number = null;
-                    $model->list = null;
-                    $model->content = null;
-                    $model->title = null;
-                    $model->title_seo = null;
-                    $model->description = null;
-                }
-
-                if($model->type == 3){
-                    $model->list = null;
-                    $model->image = null;
-                    $model->price = null;
-                    $model->content = null;
-                    $model->title = null;
-                    $model->title_seo = null;
-                    $model->description = null;
-                }
-
-                if($model->type == 4){
-                    $model->list = null;
-                    $model->desc = null;
-                    $model->price = null;
-                    $model->number = null;
-                }
+                $model->list = Json::encode($model->list);
 
                 if($model->save()){
                     Yii::$app->session->addFlash('success', 'Обновлено');
@@ -159,42 +124,7 @@ class CategoryController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                if($model->type == 1){
-                    $model->desc = null;
-                    $model->number = null;
-                    $model->image = null;
-                    $model->list = Json::encode($model->list);
-                    $model->content = null;
-                    $model->title = null;
-                    $model->title_seo = null;
-                    $model->description = null;
-                }
-
-                if($model->type == 2){
-                    $model->number = null;
-                    $model->list = null;
-                    $model->content = null;
-                    $model->title = null;
-                    $model->title_seo = null;
-                    $model->description = null;
-                }
-
-                if($model->type == 3){
-                    $model->list = null;
-                    $model->image = null;
-                    $model->price = null;
-                    $model->content = null;
-                    $model->title = null;
-                    $model->title_seo = null;
-                    $model->description = null;
-                }
-
-                if($model->type == 4){
-                    $model->list = null;
-                    $model->desc = null;
-                    $model->price = null;
-                    $model->number = null;
-                }
+                $model->list = Json::encode($model->list);
 
                 if($model->save()){
                     Yii::$app->session->addFlash('success', 'Обновлено');
