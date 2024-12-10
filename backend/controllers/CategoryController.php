@@ -38,7 +38,7 @@ class CategoryController extends Controller
     {
         if(Yii::$app->request->get('id')){
             $dataProvider = new ActiveDataProvider([
-                'query' => Category::find()->where(['parent_id' => Yii::$app->request->get('id')]),
+                'query' => Category::find()->where(['parent_id' => Yii::$app->request->get('id'),'status' => 1]),
                 'sort' => [
                     'defaultOrder' => [
                         'status' => SORT_DESC,
