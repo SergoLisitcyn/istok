@@ -2,7 +2,7 @@
 
 use common\models\Services;
 
-$category = Services::find()->orderBy(['sort' => SORT_ASC])->all();
+$category = Services::find()->where(['status' => 1])->orderBy(['sort' => SORT_ASC])->all();
 $string = '';
 foreach ($category as $value){
     $string.= '<li><a href="/admin/category?id='.$value['id'].'"><i class="fa fa-circle-o"></i><span>'.$value['name'].'</span></a></li>';
