@@ -8,7 +8,7 @@ if(!empty($model->title)) {
 }
 $styleBanner = '';
 if($service->banner){
-    $styleBanner = 'background-image:url(..'.$service->banner.')';
+    $styleBanner = 'background-image:url('.$service->banner.')';
 }
 
 $breadcrumbs = $service->name;

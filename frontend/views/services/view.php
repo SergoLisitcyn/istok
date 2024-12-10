@@ -10,7 +10,7 @@ if(!empty($model->title)) { $this->title = $model->title; }
 if(!empty($model->description)) { $this->registerMetaTag(['name' => 'description','content' => $model->description]); }
 $styleBanner = '';
 if($model->banner){
-    $styleBanner = 'background-image:url('.$model->banner.')';
+    $styleBanner = 'background-image:url(..'.$model->banner.')';
 }
 $breadcrumbs = $model->name;
 if($model->breadcrumbs){
