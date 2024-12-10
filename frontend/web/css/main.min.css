@@ -632,7 +632,8 @@ button {
     min-height: 100%;
     border: 2px solid rgba(10,132,126,.5);
     background: #fff;
-    height: auto
+    height: auto;
+    max-width: calc(33% - 16px);
 }
 
 .uni-slider__item:not(:last-child) {
@@ -2232,6 +2233,10 @@ button {
 @media (max-width: 900px) {
     .header-info {
         display:none
+    }
+
+    .uni-slider__item {
+        max-width: 100%;
     }
 
     .header-info__columns {
