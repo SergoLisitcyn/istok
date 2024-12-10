@@ -11,12 +11,15 @@ use yii\grid\GridView;
 
 if(!empty($pages->title_seo)) { $this->title = $pages->title_seo; }
 if(!empty($pages->description)) { $this->registerMetaTag(['name' => 'description','content' => $pages->description]); }
-
+$titleH1 = $pages->name;
+if($pages->title){
+    $titleH1 = $pages->title;
+}
 ?>
 <section class="services-heading heading">
     <div class="container">
         <div class="heading__row">
-            <h1 class="heading__title">Виды работ</h1>
+            <h1 class="heading__title"><?= $titleH1 ?></h1>
         </div>
     </div>
 </section>
