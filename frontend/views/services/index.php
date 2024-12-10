@@ -60,6 +60,7 @@ if($pages->title){
             <p class="registration__caption">Оставьте контактные данные и мы свяжемся с вами в ближайшее время</p>
             <form class="registration__form registration-form"  action="/services" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+                <input type="hidden" name="Feedback[version]" value="1" />
                 <div class="registration-form__fields">
                     <div class="registration-form__field">
                         <input type="text" name="Feedback[name]" id="name" class="registration-form__elem name" required="" autocomplete="off" minlength="2" placeholder="Введите ваше имя">
@@ -85,7 +86,7 @@ if($pages->title){
                         <i class="registration-form__icon"></i>
                     </div>
                     <div class="registration-form__field">
-                        <textarea class="registration-form__elem" rows="1" name="Feedback[body]" placeholder="Комментарий" autocomplete="off"></textarea>
+                        <textarea class="registration-form__elem" rows="1" name="Feedback[body]" placeholder="Комментарий" required="" autocomplete="off"></textarea>
                     </div>
                     <div class="registration-form__field">
                         <div class="registration-form__dropzone registration-form-dropzone">

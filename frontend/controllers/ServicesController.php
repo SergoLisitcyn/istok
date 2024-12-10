@@ -82,10 +82,33 @@ class ServicesController extends Controller
     }
 
 
-    public function actionView($url): string
+    public function actionView($url)
     {
         if(!$url){
             throw new HttpException(404, 'Страница не существует.');
+        }
+
+        $feedback = new Feedback();
+        if ($feedback->load(Yii::$app->request->post())) {
+            $file = UploadedFile::getInstance($feedback, 'file');
+            if (!is_null($file)) {
+                $feedback->file_src_filename = $file->name;
+                $ext = explode(".", $file->name);
+                $feedback->filename = Yii::$app->security->generateRandomString(6) . ".{$ext[1]}";
+                $path = Yii::getAlias('@frontend').'/web/uploads/'.$feedback->filename;
+                $file->saveAs($path);
+            }
+
+            if ($feedback->save()) {
+                $message = 'Сообщение отправлено! Спасибо!';
+                Yii::$app->session->setFlash(
+                    'successReviews',
+                    $message
+                );
+            } else {
+                var_dump($feedback->errors);die;
+            }
+            return $this->refresh();
         }
 
         if (strpos($url, '/') !== false) {
