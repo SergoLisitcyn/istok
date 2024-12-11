@@ -42,7 +42,7 @@ if($service->breadcrumbs){
 <?php if($model->content) : ?>
     <section class="works">
         <div class="container">
-            <div class="works__row section-row">
+            <div class="works__row class-row section-row">
                 <?= $model->content ?>
             </div>
         </div>
