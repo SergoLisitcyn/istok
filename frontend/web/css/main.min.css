@@ -3010,10 +3010,9 @@ button {
 }
 
 .class-row-works p{
-    font-size: 16px;
-    font-weight: 500;
-    color: #000a1a;
-    margin-top: 10px;
+    font-size: 20px;
+    color: #000;
+    padding-bottom: 15px;
 }
 
 .class-row-works h2{
