@@ -40,7 +40,7 @@ if($model->breadcrumbs){
 <?php if($model->text) : ?>
 <section class="partial-repair">
     <div class="container">
-        <div class="partial-repair__row section-row">
+        <div class="partial-repair__row  class-row  section-row">
             <?= $model->text; ?>
         </div>
     </div>
