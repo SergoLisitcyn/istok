@@ -2998,3 +2998,13 @@ button {
     margin-bottom: 15px;
     margin-top: 15px;
 }
+
+.class-row ul{
+    padding-left: 20px;
+}
+
+.class-row li{
+    list-style-type: disc;
+    padding-bottom: 15px;
+    font-size: 20px;
+}
