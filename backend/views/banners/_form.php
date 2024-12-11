@@ -65,6 +65,7 @@ use \yii\helpers\Url;
         'settings' => [
             'lang' => 'ru',
             'minHeight' => 300,
+            'replaceDivs' => false,
             'formatting' => ['p', 'blockquote', 'h2', 'h1','h3','div'],
             'imageUpload' => Url::to(['/banners/save-redactor-img','sub'=>'principles']),
             'attributes' => [
@@ -88,6 +89,7 @@ use \yii\helpers\Url;
         'settings' => [
             'lang' => 'ru',
             'minHeight' => 300,
+            'replaceDivs' => false,
             'formatting' => ['p', 'blockquote', 'h2', 'h1','h3','div'],
             'imageUpload' => Url::to(['/banners/save-redactor-img','sub'=>'advantages']),
             'attributes' => [
