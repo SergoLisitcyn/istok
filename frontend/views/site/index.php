@@ -52,62 +52,16 @@ $this->registerMetaTag(['name' => 'description','content' => HeaderWidget::widge
     </div>
 </section>
 <?php endif; ?>
+
+<?php if($banner && $banner->principles) : ?>
 <section class="principles">
     <div class="container">
         <div class="principles__row section-row">
-            <h2 class="principles__title section-title">Наши принципы</h2>
-            <div class="principles__lists">
-                <ul class="principles__list principles-list">
-                    <li class="principles-list__item">
-                        <div class="principles-list__image">
-                            <img src="img/principles/principles-1.svg" alt="Principles">
-                        </div>
-                        <p class="principles-list__text">Учитываем пожелания заказчика при разработке техзадания</p>
-                    </li>
-                    <li class="principles-list__item">
-                        <div class="principles-list__image">
-                            <img src="img/principles/principles-2.svg" alt="Principles">
-                        </div>
-                        <p class="principles-list__text">Используем рациональный подход к составлению сметы</p>
-                    </li>
-                    <li class="principles-list__item">
-                        <div class="principles-list__image">
-                            <img src="img/principles/principles-3.svg" alt="Principles">
-                        </div>
-                        <p class="principles-list__text">Соблюдаем действующие ГОСТы</p>
-                    </li>
-                    <li class="principles-list__item">
-                        <div class="principles-list__image">
-                            <img src="img/principles/principles-4.svg" alt="Principles">
-                        </div>
-                        <p class="principles-list__text">Проводим добросовестный технический надзор на каждом этапе проекта.</p>
-                    </li>
-                </ul>
-                <ul class="principles__list principles-list">
-                    <li class="principles-list__item">
-                        <div class="principles-list__image">
-                            <img src="img/principles/principles-5.svg" alt="Principles">
-                        </div>
-                        <p class="principles-list__text">Используем проверенные технологии, материалы и оборудование</p>
-                    </li>
-                    <li class="principles-list__item">
-                        <div class="principles-list__image">
-                            <img src="img/principles/principles-6.svg" alt="Principles">
-                        </div>
-                        <p class="principles-list__text">Соблюдаем оговоренные сроки выполнения работ</p>
-                    </li>
-                    <li class="principles-list__item">
-                        <div class="principles-list__image">
-                            <img src="img/principles/principles-7.svg" alt="Principles">
-                        </div>
-                        <p class="principles-list__text">Проконтролируем качество используемых материалов и результаты выполненных работ на каждом этапе реализации проекта</p>
-                    </li>
-                </ul>
-            </div>
+            <?= $banner->principles; ?>
         </div>
     </div>
 </section>
-
+<?php endif; ?>
 <section class="registration" id="registration">
     <div class="container">
         <div class="registration__row section-row">
@@ -145,51 +99,12 @@ $this->registerMetaTag(['name' => 'description','content' => HeaderWidget::widge
         </div>
     </div>
 </section>
-
-<section class="advantages">
-    <div class="container">
-        <div class="advantages__row section-row">
-            <h2 class="advantages__title section-title">Преимущества работы с нами</h2>
-            <p class="advantages__descr section-descr">В ходе реализации проекта мы берем на себя управление всеми процессами на строительной площадке. Спектр услуг включает контроль над количеством и качеством материалов, договоренности с поставщиками, использование специального оборудования и техники, привлечение профильных специалистов. Мы умеем рационально использовать ресурсы, а потому не допускаем излишков и не превышаем смету.</p>
-            <div class="advantages__columns uni-columns uni-columns-margin">
-                <div class="uni-columns__columns">
-                    <div class="uni-columns__col">
-                        <div class="uni-columns__title">Стремясь к комфортному и долгосрочному сотрудничеству с заказчиками, компания «Исток»:</div>
-                        <ul class="uni-columns__list uni-list">
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">Заключает договоры, в которых четко обозначены права и обязанности сторон, сроки выполнения работ, правила расчетов и другие особенности реализации проекта. Мы добросовестно придерживаемся всех условий контракта.</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">Держим клиентов в курсе всех этапов строительства. Работаем открыто и честно, а потому предоставляем полную информацию о ходе выполнения заказа.</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">Применяем только проверенные технологии, оборудование и материалы.</p>
-                            </li>
-                            <li class="uni-list__item">
-                                <div class="uni-list__image">
-                                    <img src="img/check.svg" alt="Check">
-                                </div>
-                                <p class="uni-list__text">Придерживаемся принципов экологической безопасности и энергоэффективности строительства.</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="uni-columns__col uni-columns__col--image">
-                        <img class="uni-columns__image" src="img/advantages.jpg" alt="Advantages">
-                    </div>
-                </div>
+<?php if($banner && $banner->advantages) : ?>
+    <section class="advantages">
+        <div class="container">
+            <div class="advantages__row section-row">
+                <?= $banner->advantages; ?>
             </div>
-            <div class="uni-image--mobile"></div>
-            <p class="advantages__postscript uni-postscript uni-postscript-margin uni-postscript--accent">«Исток» – это надежный и ответственный партнер, который выполняет свои обязательства.
-                Мы ценим наших клиентов и свою репутацию.</p>
         </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>

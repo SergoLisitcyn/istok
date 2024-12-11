@@ -4,10 +4,16 @@ namespace backend\controllers;
 
 use common\models\Banners;
 use Yii;
+use yii\base\Exception;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\base\DynamicModel;
+use yii\helpers\FileHelper;
+use yii\web\BadRequestHttpException;
+use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * BannersController implements the CRUD actions for Banners model.
@@ -142,5 +148,49 @@ class BannersController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * @throws Exception
+     * @throws BadRequestHttpException
+     */
+    public function actionSaveRedactorImg($sub = 'main'): array
+    {
+        $this -> enableCsrfValidation = false;
+        if (Yii::$app->request->isPost) {
+            $dir = Yii::getAlias('@frontend/web') . '/uploads/images/banners-' . $sub . '/';
+            if (!file_exists($dir)){
+                FileHelper::createDirectory($dir);
+            }
+            $link = 'http://'.$_SERVER['SERVER_NAME'].'/';
+            if( isset($_SERVER['HTTPS'] ) ) {
+                $link = 'https://'.$_SERVER['SERVER_NAME'].'/';
+            }
+            $resultLink = $link.'uploads/images/banners-' . $sub . '/';
+            $file = UploadedFile::getInstanceByName('file');
+            $model = new DynamicModel (compact ('file'));
+            $model->addRule ('file', 'image')->validate();
+
+            if ($model ->hasErrors()) {
+                $result = [
+                    'error' => $model -> getFirstError ('file')
+                ];
+            } else {
+                $model->file->name = strtotime('now').'_'.Yii::$app->getSecurity()->generateRandomString(6) . '.' . $model->file->extension;
+
+                if ($model->file->saveAs ($dir . $model->file->name)) {
+                    $result = ['filelink' => $resultLink . $model->file->name,'filename'=>$model->file->name];
+                } else {
+                    $result = [
+                        'error' => Yii::t ('vova07/imperavi', 'ERROR_CAN_NOT_UPLOAD_FILE')
+                    ];
+                }
+            }
+            Yii::$app->response->format = Response::FORMAT_JSON;
+
+            return $result;
+        } else {
+            throw new BadRequestHttpException ('Only Post is allowed');
+        }
     }
 }

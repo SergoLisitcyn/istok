@@ -4,6 +4,7 @@ use vova07\imperavi\Widget;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
+use \yii\helpers\Url;
 
 /** @var yii\web\View $this */
 /** @var common\models\Banners $model */
@@ -57,6 +58,52 @@ use kartik\file\FileInput;
                 'fontcolor',
             ]
 
+        ]
+    ])?>
+
+    <?= $form->field($model, 'principles')->widget(Widget::className(), [
+        'settings' => [
+            'lang' => 'ru',
+            'minHeight' => 300,
+            'formatting' => ['p', 'blockquote', 'h2', 'h1','h3','div'],
+            'imageUpload' => Url::to(['/banners/save-redactor-img','sub'=>'principles']),
+            'attributes' => [
+                [
+                    'attribute' => 'text',
+                    'format' => 'html'
+                ]
+            ],
+            'plugins' => [
+                'clips',
+                'fullscreen',
+                'imageupload',
+                'imagemanager',
+                'filemanager',
+                'fontcolor',
+            ]
+        ]
+    ])?>
+
+    <?= $form->field($model, 'advantages')->widget(Widget::className(), [
+        'settings' => [
+            'lang' => 'ru',
+            'minHeight' => 300,
+            'formatting' => ['p', 'blockquote', 'h2', 'h1','h3','div'],
+            'imageUpload' => Url::to(['/banners/save-redactor-img','sub'=>'advantages']),
+            'attributes' => [
+                [
+                    'attribute' => 'text',
+                    'format' => 'html'
+                ]
+            ],
+            'plugins' => [
+                'clips',
+                'fullscreen',
+                'imageupload',
+                'imagemanager',
+                'filemanager',
+                'fontcolor',
+            ]
         ]
     ])?>
 
