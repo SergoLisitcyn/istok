@@ -3008,3 +3008,25 @@ button {
     padding-bottom: 15px;
     font-size: 20px;
 }
+
+.class-row-works p{
+    font-size: 16px;
+    font-weight: 500;
+    color: #000a1a;
+    margin-top: 10px;
+}
+
+.class-row-works h2{
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.class-row-works ul{
+    padding-left: 20px;
+}
+
+.class-row-works li{
+    list-style-type: disc;
+    padding-bottom: 15px;
+    font-size: 20px;
+}
