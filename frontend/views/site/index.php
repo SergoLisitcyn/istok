@@ -2,10 +2,10 @@
 
 /** @var yii\web\View $this */
 
-use frontend\widgets\HeaderWidget;
 
-$this->title = HeaderWidget::widget(['type' => 'titleSeo']);
-$this->registerMetaTag(['name' => 'description','content' => HeaderWidget::widget(['type' => 'description'])]);
+if(!empty($banner->title)) { $this->title = $banner->title; }
+if(!empty($banner->description)) { $this->registerMetaTag(['name' => 'description','content' => $banner->description]); }
+
 ?>
 <?php if($banner && $banner->image) :
     $styleBanner = 'background-image:url(..'.$banner->image.')';

@@ -18,6 +18,8 @@ use yii\web\UploadedFile;
  * @property string|null $principles
  * @property string|null $advantages
  * @property int|null $status
+ * @property string|null $title
+ * @property string|null $description
  */
 class Banners extends ActiveRecord
 {
@@ -38,7 +40,7 @@ class Banners extends ActiveRecord
         return [
             [['text_h2','principles','advantages'], 'string'],
             [['status'], 'integer'],
-            [['text_h1', 'image'], 'string', 'max' => 255],
+            [['text_h1', 'image', 'title', 'description'], 'string', 'max' => 255],
         ];
     }
 
@@ -55,6 +57,8 @@ class Banners extends ActiveRecord
             'status' => 'Статус баннера',
             'principles' => 'Наши принципы',
             'advantages' => 'Преимущества',
+            'title' => 'Title на главной странице',
+            'description' => 'Description главной странице',
         ];
     }
 

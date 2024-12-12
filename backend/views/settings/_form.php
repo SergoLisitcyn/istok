@@ -44,10 +44,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'call_alert')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'maps')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'analytics')->textarea(['rows' => 6]) ?>
