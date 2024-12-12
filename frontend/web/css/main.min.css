@@ -3037,3 +3037,10 @@ button {
     padding-bottom: 15px;
     font-size: 20px;
 }
+
+.works__row h2 {
+    font-size: 36px;
+    font-weight: 500;
+    color: #000a1a;
+    padding-bottom: 15px;
+}
