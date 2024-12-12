@@ -7,8 +7,10 @@ use frontend\widgets\HeaderWidget;
 $this->title = HeaderWidget::widget(['type' => 'titleSeo']);
 $this->registerMetaTag(['name' => 'description','content' => HeaderWidget::widget(['type' => 'description'])]);
 ?>
-<?php if($banner) : ?>
-<section class="main-info">
+<?php if($banner && $banner->image) :
+    $styleBanner = 'background-image:url(..'.$banner->image.')';
+    ?>
+<section class="main-info" style="<?= $styleBanner ?>">
     <div class="container">
         <div class="main-info__row">
             <?php if($banner->text_h1) : ?>

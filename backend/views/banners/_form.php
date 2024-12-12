@@ -110,11 +110,7 @@ use \yii\helpers\Url;
     ])?>
 
 
-
-    <?= $form->field($model, 'status')->dropDownList([
-        '1' => 'Активен',
-        '0' => 'Не активен'
-    ]) ?>
+    <input type="hidden" name="Banners[status]" value="1" />
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
