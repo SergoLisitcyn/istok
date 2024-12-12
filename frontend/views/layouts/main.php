@@ -19,6 +19,7 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
@@ -26,6 +27,12 @@ AppAsset::register($this);
     <div class="alert alert-success alert-dismissible alert-main-page" role="alert">
         <button type="button" class="close-main-page" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <?php echo Yii::$app->session->getFlash('successReviews'); ?>
+    </div>
+<?php endif;?>
+<?php if( Yii::$app->session->hasFlash('errors') ): ?>
+    <div class="alert alert-warning alert-dismissible alert-main-page-danger" role="alert">
+        <button type="button" class="close-main-page" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?php echo Yii::$app->session->getFlash('errors'); ?>
     </div>
 <?php endif;?>
 <?= HeaderWidget::widget(['type' => 'header']) ?>

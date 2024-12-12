@@ -70,7 +70,10 @@ class ServicesController extends Controller
                     $message
                 );
             } else {
-                var_dump($feedback->errors);die;
+                Yii::$app->session->setFlash(
+                    'errors',
+                    'Ошибка! Сообщение не отправлено. Повторите попытку.'
+                );
             }
             return $this->refresh();
         }

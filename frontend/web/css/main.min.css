@@ -2919,6 +2919,14 @@ button {
     padding: 10px;
 }
 
+.alert-main-page-danger{
+    background: red;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    padding: 10px;
+}
+
 .close-main-page{
     font-size: 16px;
     color: #fff;
