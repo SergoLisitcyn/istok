@@ -1559,13 +1559,30 @@ button {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    gap: 12%
+    gap: 12%;
 }
-
-.footer-info-list__item:not(:first-child) {
-    margin-top: 15px
+.footer-info__box {
+    margin-left: 20px;
 }
-
+.footer-info-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 15px;
+}
+.footer-info-list__item {
+    width: 100%;
+    max-width: 250px;
+}
 .footer-info-list__link {
     color: #fff;
     font-weight: 400
@@ -2864,6 +2881,9 @@ button {
 
     .not-found__button {
         margin-top: 37px
+    }
+    .footer-info-list__item {
+        max-width: 100%;
     }
 }
 

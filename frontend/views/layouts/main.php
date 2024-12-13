@@ -19,7 +19,6 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
@@ -75,6 +74,9 @@ AppAsset::register($this);
                                     <a href="/company" class="footer-info-list__link">О компании</a>
                                 </li>
                                 <li class="footer-info-list__item">
+                                    <a href="/works" class="footer-info-list__link">Наши работы</a>
+                                </li>
+                                <li class="footer-info-list__item">
                                     <a href="/vacancy" class="footer-info-list__link">Вакансии</a>
                                 </li>
                                 <li class="footer-info-list__item">
@@ -85,33 +87,7 @@ AppAsset::register($this);
                                 </li>
                             </ul>
                         </div>
-                        <div class="footer-info__box">
-                            <div class="footer-info__title">Виды работ</div>
-                            <div class="footer-info__column">
-                                <ul class="footer-info__list footer-info-list">
-                                    <li class="footer-info-list__item">
-                                        <a href="/services/finishing" class="footer-info-list__link">Отделочные работы квартир, помещений, домов и коттеджей</a>
-                                    </li>
-                                    <li class="footer-info-list__item">
-                                        <a href="/services/partial-repair" class="footer-info-list__link">Частичный ремонт</a>
-                                    </li>
-                                    <li class="footer-info-list__item">
-                                        <a href="/services/minor-repairs" class="footer-info-list__link">Мелкий ремонт <br> (услуга «муж на час»)</a>
-                                    </li>
-                                </ul>
-                                <ul class="footer-info__list footer-info-list">
-                                    <li class="footer-info-list__item">
-                                        <a href="/services/electrical" class="footer-info-list__link">Электромонтажные работы и инженерная сантехника</a>
-                                    </li>
-                                    <li class="footer-info-list__item">
-                                        <a href="/services/building" class="footer-info-list__link">Строительство домов <br> и коттеджей «под ключ»</a>
-                                    </li>
-                                    <li class="footer-info-list__item">
-                                        <a href="/services/industrial" class="footer-info-list__link">Промышленное строительство быстровозводимых производственных зданий</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <?= HeaderWidget::widget(['type' => 'footer_services']) ?>
                     </div>
                 </div>
             </div>

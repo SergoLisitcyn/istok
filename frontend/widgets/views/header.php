@@ -186,7 +186,6 @@
                             </svg>
                         </div>
                         <textarea class="main-form__elem" rows="6" name="Feedback[body]" placeholder="Ваш вопрос" autocomplete="off"></textarea>
-                        <div class="g-recaptcha" data-sitekey="6Lf9_ZkqAAAAAJ47JDcM2hb_bOYeqagWf5u195Sy"></div>
                     </div>
                     <button type="submit" class="main-form__button button">Отправить заявку</button>
                 </form>
