@@ -19,6 +19,7 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <?= HeaderWidget::widget(['type' => 'analytics']) ?>
 </head>
 <body class="d-flex flex-column h-100">

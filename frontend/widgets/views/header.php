@@ -159,7 +159,7 @@
                                 <path id="Vector" d="M21.06 26.15L25.46 26.15" stroke="#000A1A" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <input class="main-form__elem" type="text" name="Feedback[name]" id="name" placeholder="Введите ваше имя" autocomplete="off"></input>
+                        <input class="main-form__elem" type="text" name="Feedback[name]" id="name" placeholder="Введите ваше имя" required=""  autocomplete="off"></input>
                     </div>
                     <div class="main-form__box">
                         <div class="main-form__icon">
@@ -171,7 +171,7 @@
                                 <path id="Vector" d="M4.43 2.98C5.29 2.21 6.51 0.85 7.83 1C9.22 1.16 10.21 2.58 10.91 3.6C12.1 5.33 14.01 7.86 12.26 9.81C11.4 10.74 10.08 11.23 9.32 12.22C8.53 13.24 8.99 14.57 9.55 15.62C10.77 17.94 12.89 20.13 15 21.77C15.96 22.48 17.25 23.38 18.54 23.16C19.89 22.94 20.92 21.55 21.94 20.81C24.49 18.9 27.26 21.52 29.14 23.07C30 23.81 31.03 24.77 30.99 25.94C30.93 27.15 29.28 28.13 28.35 28.84C25.87 30.76 22.77 31.38 19.66 30.76C16.29 30.11 13.45 28.23 10.91 26.13C8.3 23.99 6.12 21.43 4.23 18.74C3.34 17.47 2.58 16.18 2.02 14.75C1.42 13.24 1.23 11.73 1 10.12C1.03 7.31 2.25 4.87 4.43 2.98Z" stroke="#000A1A" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <input class="main-form__elem" type="tel"  name="Feedback[phone]" id="phone" placeholder="Введите ваш телефон" autocomplete="off"></input>
+                        <input class="main-form__elem" type="tel"  name="Feedback[phone]" id="phone" placeholder="Введите ваш телефон" required=""  autocomplete="off"></input>
                     </div>
                     <div class="main-form__box">
                         <div class="main-form__icon main-form__icon--textarea">
@@ -185,8 +185,9 @@
                                 <path id="Vector" d="M15.82 20.85C15.91 20.85 15.91 20.85 16 20.85" stroke="#000A1A" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <textarea class="main-form__elem" rows="6" name="Feedback[body]" placeholder="Ваш вопрос" autocomplete="off"></textarea>
+                        <textarea class="main-form__elem" rows="6" name="Feedback[body]" required="" placeholder="Ваш вопрос" autocomplete="off"></textarea>
                     </div>
+                    <div class="g-recaptcha" data-sitekey="6Lc6vKAqAAAAADrW4scSKDL2TgEa58WR8rGusp1z"></div>
                     <button type="submit" class="main-form__button button">Отправить заявку</button>
                 </form>
             </div>
