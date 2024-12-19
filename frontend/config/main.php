@@ -55,6 +55,7 @@ return [
                 'vacancy' => '/site/vacancy',
                 'privacy' => '/site/privacy',
                 'services' => '/services/index',
+                'sitemap.xml' => '/sitemap/index',
                 [
                     'pattern' => 'services/<url:\S+>',
                     'route' => '/services/view',
