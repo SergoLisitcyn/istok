@@ -196,9 +196,14 @@ class FeedbackController extends Controller
      */
     public function actionDelete($id)
     {
+        $url = 'index';
+        if(isset($_GET) && $_GET['url']){
+            $url = $_GET['url'];
+        }
+
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect([$url]);
     }
 
     public function actionDownload($id)

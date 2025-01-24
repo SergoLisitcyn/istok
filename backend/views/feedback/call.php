@@ -71,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'options' => ['width' => '100'],
                 'value' => function ($model, $index, $jobList) {
-                    return Html::tag('a', 'Удалить', ['href' => Url::toRoute(['feedback/delete', 'id' => $index]), 'data-method' => 'post', 'data-confirm' => 'Вы точно хотите удалить?', 'class' => 'btn btn-order btn-danger', 'style' => 'font-weight: 100']);
+                    return Html::tag('a', 'Удалить', ['href' => Url::toRoute(['feedback/delete', 'id' => $index,'url' => 'call']), 'data-method' => 'post', 'data-confirm' => 'Вы точно хотите удалить?', 'class' => 'btn btn-order btn-danger', 'style' => 'font-weight: 100']);
                 },
             ],
         ],
