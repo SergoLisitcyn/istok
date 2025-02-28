@@ -90,7 +90,9 @@ class GalleryController extends Controller
                     $files = $_FILES['Gallery'];
                     $image = $model->attachImage($files,$this->request->post()['Gallery']);
                 }
-                $model->image = Json::encode($image);
+                if($image){
+                    $model->image = Json::encode($image);
+                }
 
                 if($model->save()){
                     Yii::$app->session->addFlash('success', 'Создан');
@@ -140,8 +142,7 @@ class GalleryController extends Controller
             'model' => $model,
         ]);
     }
-//{"name":"/uploads/images/gallery/logo4.svg","desc":"231423432"},{"name":"/uploads/images/gallery/logo4.svg","desc":"231423432"}
-//{"1":"Тема 1","2":"Тема 2","3":"Тема 3"}
+
     /**
      * Deletes an existing Gallery model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

@@ -77,6 +77,10 @@ class Gallery extends \yii\db\ActiveRecord
         $i = 1;
         foreach ($absolutePath as $arr){
             foreach ($arr as $value){
+                if(empty($value)){
+                    continue;
+                }
+
                 $absolutePathArr[$i]['tmp_name'] = $value;
                 $i++;
             }
@@ -111,13 +115,15 @@ class Gallery extends \yii\db\ActiveRecord
                 pathinfo($path['name'], PATHINFO_EXTENSION);
             $filePath = $directory . $pictureFileName;
             $pathUrl = '/uploads/images/gallery/'.$pictureFileName;
-            copy($path['tmp_name'], $filePath);
-            unset($absolutePathArr[$key]['tmp_name']);
-            unset($absolutePathArr[$key]['name']);
-            $absolutePathArr[$key]['file'] = $pathUrl;
+
+            if($path['tmp_name']){
+                copy($path['tmp_name'], $filePath);
+                unset($absolutePathArr[$key]['tmp_name']);
+                unset($absolutePathArr[$key]['name']);
+                $absolutePathArr[$key]['file'] = $pathUrl;
+            }
+
         }
-
-
         return $absolutePathArr;
     }
 }
