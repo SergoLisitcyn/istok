@@ -16,6 +16,7 @@ foreach ($category as $value){
                 'items' => [
                     ['label' => 'Настройки', 'icon' => 'home', 'url' => ['/settings/update?id=1']],
                     ['label' => 'Главная страница', 'icon' => 'tasks', 'url' => ['/banners/update?id=1']],
+                    ['label' => 'Галерея «Наши работы»', 'icon' => 'image', 'url' => ['/gallery']],
                     [
                         'label' => 'Второстепенные страницы',
                         'icon' => 'book',
@@ -30,8 +31,8 @@ foreach ($category as $value){
                         ],
                     ],
                     ['label' => 'Виды работ', 'icon' => 'reorder', 'url' => ['/services']],
-                    ['label' => 'Подкатегории', 'icon' => 'picture-o', 'url' => ['/category'],'template' => '<li class="treeview"><a href="#">
-<i class="fa fa-picture-o"></i>  <span>Подкатегории</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                    ['label' => 'Подкатегории', 'icon' => 'clone', 'url' => ['/category'],'template' => '<li class="treeview"><a href="#">
+<i class="fa fa-clone"></i>  <span>Подкатегории</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
     <ul class="treeview-menu">'.$string.'</ul>
 </li>'],
                     [

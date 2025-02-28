@@ -31,7 +31,9 @@
         "vova07/yii2-imperavi-widget": "*",
         "jodit/yii2-jodit": "*",
         "unclead/yii2-multiple-input": "~2.0",
-        "kartik-v/yii2-editors": "dev-master"
+        "kartik-v/yii2-editors": "dev-master",
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "kartik-v/bootstrap-fileinput": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

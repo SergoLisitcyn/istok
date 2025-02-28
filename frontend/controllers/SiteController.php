@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\Applications;
 use common\models\Banners;
 use common\models\Feedback;
+use common\models\Gallery;
 use common\models\Pages;
 use common\models\Services;
 use frontend\models\ResendVerificationEmailForm;
@@ -165,8 +166,21 @@ class SiteController extends Controller
     public function actionWorks()
     {
         $data = Pages::findOne(['url' => 'works']);
+        $services = Services::find()->where(['status' => 1])->orderBy(['sort' => SORT_ASC])->all();
+        $arrayService = [];
+        foreach ($services as $key => $service){
+            $gallery = Gallery::find()->where(['status' => 1,'parent_id' => $service->id])->orderBy(['sort' => SORT_ASC])->all();
+            if($gallery){
+                $arrayService[$key] = [
+                    'service' => $service,
+                    'gallery' => $gallery,
+                ];
+            }
+        }
+
         return $this->render('works', [
             'data' => $data,
+            'arrayService' => $arrayService,
         ]);
     }
 
