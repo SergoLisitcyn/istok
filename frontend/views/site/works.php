@@ -28,9 +28,11 @@ if(!empty($data->title)) {
     <div class="container">
         <ul class="filter__list">
             <?php foreach($arrayService as $service) : ?>
+            <?php if($service['gallery'][0]['image']) : ?>
             <li class="filter__item">
-                <a href="#" class="filter__link"><?= $service['service']->name ?></a>
+                <a href="#gallery-section__title-<?= $service['service']->id ?>" class="filter__link"><?= $service['service']->name ?></a>
             </li>
+                <?php endif; ?>
             <?php endforeach; ?>
         </ul>
     </div>
@@ -42,15 +44,14 @@ if(!empty($data->title)) {
             <?php foreach($arrayService as $service) : ?>
             <?php if($service['gallery']) : ?>
             <?php foreach($service['gallery'] as $gallery) : ?>
-
-                <div class="gallery-section__box">
+                <?php if($gallery->image) : ?>
+                <div class="gallery-section__box" id="gallery-section__title-<?= $service['service']->id ?>">
                     <div class="gallery-section__title"><?= $gallery->name ?></div>
+
                     <?php if($gallery->description) : ?>
-                    <p class="gallery-section__descr"><?= $gallery->description ?></p>
+                        <p class="gallery-section__descr"><?= $gallery->description ?></p>
                     <?php endif; ?>
 
-
-                <?php if($gallery->image) : ?>
                     <div class="gallery-section__slider gallery-slider">
                         <div class="swiper-container gallery-slider__container">
                             <div class="swiper-wrapper gallery-slider__wrapper">
@@ -71,6 +72,7 @@ if(!empty($data->title)) {
                                     </div>
                                 <?php endforeach; ?>
                             </div>
+                            <?php if(count($gallery->image) > 1) : ?>
                             <div class="gallery-slider__nav">
                                 <div class="prev-btn">
                                     <svg width="35.000000" height="35.000000" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -93,10 +95,11 @@ if(!empty($data->title)) {
                                     </svg>
                                 </div>
                             </div>
+                    <?php endif; ?>
                         </div>
                     </div>
-                <?php endif; ?>
                 </div>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
             <?php endforeach; ?>

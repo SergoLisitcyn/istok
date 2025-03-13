@@ -39,12 +39,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             'name',
-            'sort',
+            [
+                'class' => 'kartik\grid\EditableColumn',
+                'attribute' => 'sort',
+                'hAlign' => 'center',
+                'filter' => true,
+                'value' => function($model){ return $model->sort; },
+            ],
             [
                 'class' => 'kartik\grid\EditableColumn',
                 'attribute' => 'status',
                 'hAlign' => 'center',
-                'filter' => false,
+                'filter' => true,
                 'editableOptions' =>  function ($model, $key, $index) {
                     return [
                         'header' => 'статус',

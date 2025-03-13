@@ -69,61 +69,25 @@ class Gallery extends \yii\db\ActiveRecord
         return $this->hasMany(Services::className(), ['id' => 'parent_id']);
     }
 
-    public static function attachImage($files,$post)
+    public static function attachImage($uploadedFiles,$post)
     {
-        $absolutePath = $files['tmp_name']['image'];
-        $fileRealName = $files['name']['image'];
-        $absolutePathArr = [];
-        $i = 1;
-        foreach ($absolutePath as $arr){
-            foreach ($arr as $value){
-                if(empty($value)){
-                    continue;
-                }
-
-                $absolutePathArr[$i]['tmp_name'] = $value;
-                $i++;
-            }
-        }
-
-        foreach ($absolutePathArr as $key => $item){
-            foreach ($fileRealName as $arrs){
-                foreach ($arrs as $value){
-                    $absolutePathArr[$key]['name'] = $value;
-                }
-                if(!empty($post['image'])){
-
-                    foreach ($post['image'] as $item){
-                        if(is_array($item)){
-                            foreach ($item as $s){
-                                $absolutePathArr[$key]['desc'] = $s;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        $descriptions = $_POST['descriptions'] ?? [];
         $directory = Yii::getAlias('@frontend/web/uploads/images/gallery') . DIRECTORY_SEPARATOR;
+        $existingData = [];
+
         if (!is_dir($directory)) {
             FileHelper::createDirectory($directory);
         }
 
-        foreach ($absolutePathArr as $key => $path){
-            $pictureFileName =
-                substr(md5(microtime(true) . $path['tmp_name']), 4, 6)
-                . '.' .
-                pathinfo($path['name'], PATHINFO_EXTENSION);
-            $filePath = $directory . $pictureFileName;
-            $pathUrl = '/uploads/images/gallery/'.$pictureFileName;
+        foreach ($uploadedFiles as $index => $file) {
+            $fileName = substr(md5(microtime(true) . $file['tmp_name']), 4, 6) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+            $filePath = $directory . $fileName;
+            $fileUrl = '/uploads/images/gallery/' . $fileName;
 
-            if($path['tmp_name']){
-                copy($path['tmp_name'], $filePath);
-                unset($absolutePathArr[$key]['tmp_name']);
-                unset($absolutePathArr[$key]['name']);
-                $absolutePathArr[$key]['file'] = $pathUrl;
+            if (move_uploaded_file($file['tmp_name'], $filePath)) {
+                $existingData[] = ['file' => $fileUrl, 'desc' => $descriptions[$index] ?? ''];
             }
-
         }
-        return $absolutePathArr;
+        return $existingData;
     }
 }

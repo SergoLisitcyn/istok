@@ -34,11 +34,7 @@ class GalleryController extends Controller
         );
     }
 
-    /**
-     * Lists all Gallery models.
-     *
-     * @return string
-     */
+
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
@@ -54,6 +50,21 @@ class GalleryController extends Controller
             ],
             */
         ]);
+
+        if (Yii::$app->request->post('hasEditable'))
+        {
+            $id=$_POST['editableKey'];
+            $model = $this->findModel($id);
+            $post = [];
+            $posted = current($_POST['Gallery']);
+
+            $post['Gallery'] = $posted;
+            if ($model->load($post)) {
+                $model->save();
+            }
+
+            return $this->refresh();
+        }
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -84,12 +95,12 @@ class GalleryController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-
                 $image = null;
                 if($_FILES){
-                    $files = $_FILES['Gallery'];
-                    $image = $model->attachImage($files,$this->request->post()['Gallery']);
+                    $uploadedFiles = $this->reformatFilesArray($_FILES['image']);
+                    $image = $model->attachImage($uploadedFiles,$uploadedFiles);
                 }
+
                 if($image){
                     $model->image = Json::encode($image);
                 }
@@ -120,15 +131,21 @@ class GalleryController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $imagesArray = $model['image'];
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
+
                 $image = null;
                 if($_FILES){
-                    $files = $_FILES['Gallery'];
-                    $image = $model->attachImage($files,$this->request->post()['Gallery']);
+                    $uploadedFiles = $this->reformatFilesArray($_FILES['image']);
+                    $image = $model->attachImage($uploadedFiles,$uploadedFiles);
                 }
-                $model->image = Json::encode($image);
+
+                if($image){
+                    $imagesArray = array_merge($imagesArray, $image);
+                }
+                $model->image = Json::encode($imagesArray);
+
 
                 if($model->save()){
                     Yii::$app->session->addFlash('success', 'Обновлено');
@@ -138,8 +155,11 @@ class GalleryController extends Controller
                 }
             }
         }
+
+        $imagesArray = $model->image ?? [];
         return $this->render('update', [
             'model' => $model,
+            'imagesArray' => $imagesArray,
         ]);
     }
 
@@ -157,6 +177,26 @@ class GalleryController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionDeleteimage()
+    {
+        $id = $_POST['id'];
+        $index = $_POST['index'];
+
+        $model = $this->findModel($id);
+        $imagesArray = $model->image ?? [];
+
+        if (isset($imagesArray[$index])) {
+            unset($imagesArray[$index]); // Убираем из массива
+
+            $model->image = Json::encode(array_values($imagesArray)); // Обновляем JSON
+            $model->save();
+
+            echo json_encode(["success" => true]);
+        } else {
+            echo json_encode(["success" => false, "error" => "Файл не найден"]);
+        }
+    }
+
     /**
      * Finds the Gallery model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -171,6 +211,22 @@ class GalleryController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    protected function reformatFilesArray($files) {
+        $fileArray = [];
+        foreach ($files['name'] as $key => $name) {
+            if ($files['error'][$key] === UPLOAD_ERR_OK) {
+                $fileArray[] = [
+                    'name' => $name,
+                    'type' => $files['type'][$key],
+                    'tmp_name' => $files['tmp_name'][$key],
+                    'error' => $files['error'][$key],
+                    'size' => $files['size'][$key],
+                ];
+            }
+        }
+        return $fileArray;
     }
 
 }
