@@ -136,9 +136,17 @@ class GalleryController extends Controller
             if ($model->load($this->request->post())) {
 
                 $image = null;
-                if($_FILES){
+                if($_FILES && isset($_FILES['image'])){
                     $uploadedFiles = $this->reformatFilesArray($_FILES['image']);
                     $image = $model->attachImage($uploadedFiles,$uploadedFiles);
+                } else {
+                    if (!empty($this->request->post('descriptions'))) {
+                        foreach ($this->request->post('descriptions') as $index => $desc) {
+                            if (isset($imagesArray[$index])) {
+                                $imagesArray[$index]['desc'] = $desc; // Обновляем описание
+                            }
+                        }
+                    }
                 }
 
                 if($image){
