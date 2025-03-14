@@ -150,6 +150,8 @@ class GalleryController extends Controller
                 if($image){
                     if($imagesArray){
                         $imagesArray = array_merge($imagesArray, $image);
+                    } else {
+                        $imagesArray = $image;
                     }
                 }
                 $model->image = Json::encode($imagesArray);
