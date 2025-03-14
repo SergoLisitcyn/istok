@@ -86,9 +86,10 @@ if(!empty($data->title)) {
                             </div>
                         </div>
                     </div>
+                    <div class="g-recaptcha" data-sitekey="6Lc6vKAqAAAAADrW4scSKDL2TgEa58WR8rGusp1z"></div>
                     <div class="registration-form__columns">
                         <p class="registration-form__descr">Нажимая на кнопку «Отправить заявку» Вы даете согласие на обработку своих персональных данных.</p>
-                        <button type="submit" class="registration-form__button">Отправить заявку</button>
+                        <button type="submit"  onclick="recaptcha();" class="registration-form__button">Отправить заявку</button>
                     </div>
                 </div>
             </form>

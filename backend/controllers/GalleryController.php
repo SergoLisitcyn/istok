@@ -96,14 +96,12 @@ class GalleryController extends Controller
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $image = null;
-                if($_FILES){
+                if($_FILES && isset($_FILES['image'])){
                     $uploadedFiles = $this->reformatFilesArray($_FILES['image']);
                     $image = $model->attachImage($uploadedFiles,$uploadedFiles);
                 }
 
-                if($image){
-                    $model->image = Json::encode($image);
-                }
+                $model->image = Json::encode($image);
 
                 if($model->save()){
                     Yii::$app->session->addFlash('success', 'Создан');
