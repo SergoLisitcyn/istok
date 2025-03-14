@@ -67,6 +67,8 @@ if($model){
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'description')->textarea(['rows' => 3]) ?>
+
     <?= $form->field($model, 'image[]')->fileInput(['maxlength' => true,'id' => 'imageInput']) ?>
     <div class="image-preview" id="preview">
         <?php if (!empty($imagesArray)): ?>
@@ -79,8 +81,6 @@ if($model){
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
-
-    <?= $form->field($model, 'description')->textarea(['rows' => 3]) ?>
 
 
     <?= $form->field($model, 'sort')->textInput() ?>
