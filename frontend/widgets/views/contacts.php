@@ -22,6 +22,11 @@
             <a href="mailto:<?= $settings->email ?>" class="connect-box__link"><?= $settings->email ?></a>
         </div>
         <?php endif; ?>
+        <?php if($settings->address) : ?>
+            <div class="connect-box__item">
+                <span class="connect-box__link"><?= $settings->address ?></span>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 <?php if($settings->maps) : ?>

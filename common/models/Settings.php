@@ -20,6 +20,7 @@ use yii\helpers\Json;
  * @property string|null $dzen
  * @property string|null $call_list
  * @property string|null $call_alert
+ * @property string|null $address
  * @property int|null $call
  */
 class Settings extends ActiveRecord
@@ -41,7 +42,7 @@ class Settings extends ActiveRecord
             [['maps', 'analytics'], 'string'],
             [['call_list'], 'safe'],
             [['call'], 'integer'],
-            [['phone', 'email', 'whatsapp', 'telegram','ok','vk','dzen','call_alert'], 'string', 'max' => 255],
+            [['phone', 'email', 'whatsapp', 'telegram','ok','vk','dzen','call_alert','address'], 'string', 'max' => 255],
         ];
     }
 
@@ -56,6 +57,7 @@ class Settings extends ActiveRecord
             'email' => 'Email',
             'whatsapp' => 'Whatsapp',
             'telegram' => 'Telegram',
+            'address' => 'Адрес',
             'maps' => 'Карта',
             'analytics' => 'Аналитика',
             'ok' => 'Одноклассники',
