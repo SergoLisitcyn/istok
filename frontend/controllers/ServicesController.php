@@ -49,6 +49,13 @@ class ServicesController extends Controller
         if ($feedback->load(Yii::$app->request->post())) {
             $file = UploadedFile::getInstance($feedback, 'file');
             $post = Yii::$app->request->post();
+            if(empty($post['g-recaptcha-response'])){
+                Yii::$app->session->setFlash(
+                    'errors',
+                    'Ошибка! Сообщение не отправлено. Подтвердите, что Вы не являетесь роботом!'
+                );
+                return $this->refresh();
+            }
             if (!is_null($file)) {
                 $feedback->file_src_filename = $file->name;
                 $ext = explode(".", $file->name);
