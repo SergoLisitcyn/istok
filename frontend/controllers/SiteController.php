@@ -204,6 +204,14 @@ class SiteController extends Controller
         $data = Pages::findOne(['url' => 'vacancy']);
         $feedback = new Feedback();
         if ($feedback->load(Yii::$app->request->post())) {
+            $post = Yii::$app->request->post();
+            if(empty($post['g-recaptcha-response'])){
+                Yii::$app->session->setFlash(
+                    'errors',
+                    'Ошибка! Сообщение не отправлено. Подтвердите, что Вы не являетесь роботом!'
+                );
+                return $this->refresh();
+            }
             $file = UploadedFile::getInstance($feedback, 'file');
             if (!is_null($file)) {
                 $feedback->file_src_filename = $file->name;

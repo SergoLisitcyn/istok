@@ -188,7 +188,7 @@
                         <textarea class="main-form__elem" rows="6" name="Feedback[body]" required="" placeholder="Ваш вопрос" autocomplete="off"></textarea>
                     </div>
                     <div class="g-recaptcha" data-sitekey="6Lc6vKAqAAAAADrW4scSKDL2TgEa58WR8rGusp1z" style="margin-top: 12px"></div>
-                    <button type="submit"  onclick="recaptcha();" class="main-form__button button">Отправить заявку</button>
+                    <button type="submit" class="main-form__button button">Отправить заявку</button>
                 </form>
             </div>
             <div class="main-modal__overlay"></div>
