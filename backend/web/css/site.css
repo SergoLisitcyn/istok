@@ -110,3 +110,11 @@ a.desc:after {
 .sidebar-menu{
     white-space: initial !important;
 }
+
+.alert-success{
+    margin-top: 10px;
+}
+
+.alert-danger{
+    margin-top: 10px;
+}

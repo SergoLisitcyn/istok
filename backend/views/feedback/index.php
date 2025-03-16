@@ -15,14 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="feedback-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
+    <?= Html::beginForm(['feedback/checkbox-delete'],'post');?>
+    <?= Html::submitButton('Удалить выбранные', ['class' => 'btn btn-danger mt-3 mb-3','data-confirm' => Yii::t('yii', 'Вы уверены, что хотите удалить данные записи? Восстановить их будет нельзя.'),]);?>
     <?= \kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            [
-                'class' => 'yii\grid\SerialColumn',
-                'options' => ['width' => '10'],
-            ],
+            ['class' => 'yii\grid\CheckboxColumn'],
 
             'name',
             'email:email',
@@ -89,6 +87,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-
+    <?= Html::endForm();?>
 
 </div>

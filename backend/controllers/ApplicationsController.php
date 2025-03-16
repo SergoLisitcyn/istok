@@ -151,4 +151,17 @@ class ApplicationsController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionCheckboxDelete(){
+        $selection = \Yii::$app->request->post('selection');
+        if ($selection != null){
+            Applications::deleteAll([
+                'id' => $selection
+            ]);
+            \Yii::$app->session->setFlash('success', 'Выбранные данные удалены!');
+        } else {
+            \Yii::$app->session->setFlash('error', 'Нечего удалять!');
+        }
+        return$this->redirect('index');
+    }
 }

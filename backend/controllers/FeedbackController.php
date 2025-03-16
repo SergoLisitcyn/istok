@@ -230,4 +230,43 @@ class FeedbackController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionCheckboxDelete(){
+        $selection = \Yii::$app->request->post('selection');
+        if ($selection != null){
+            Feedback::deleteAll([
+                'id' => $selection
+            ]);
+            \Yii::$app->session->setFlash('success', 'Выбранные данные удалены!');
+        } else {
+            \Yii::$app->session->setFlash('error', 'Нечего удалять!');
+        }
+        return$this->redirect('index');
+    }
+
+    public function actionCheckboxDeleteCall(){
+        $selection = \Yii::$app->request->post('selection');
+        if ($selection != null){
+            Feedback::deleteAll([
+                'id' => $selection
+            ]);
+            \Yii::$app->session->setFlash('success', 'Выбранные данные удалены!');
+        } else {
+            \Yii::$app->session->setFlash('error', 'Нечего удалять!');
+        }
+        return$this->redirect('call');
+    }
+
+    public function actionCheckboxDeleteVacancy(){
+        $selection = \Yii::$app->request->post('selection');
+        if ($selection != null){
+            Feedback::deleteAll([
+                'id' => $selection
+            ]);
+            \Yii::$app->session->setFlash('success', 'Выбранные данные удалены!');
+        } else {
+            \Yii::$app->session->setFlash('error', 'Нечего удалять!');
+        }
+        return$this->redirect('vacancy');
+    }
 }
