@@ -89,7 +89,7 @@
                                 </li>
                             </ul>
                             <div class="header-info__connect connect-box">
-                                <a href="tel:+74953637967" class="connect-box__link">+7 (495) 363-79-67</a>
+                                <a href="tel:<?= $settings->phone ?>" class="connect-box__link"><?= $settings->phone ?></a>
                             </div>
                         </div>
                     </div>
